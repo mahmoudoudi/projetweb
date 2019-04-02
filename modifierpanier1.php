@@ -1,10 +1,17 @@
 
-<?PHP
-include "../core/panierP.php";
-$panierP1=new panierP();
-$listepanier=$panierP1->afficherpaniers();
+<?php
+include "../config.php";
+$db=config::getConnexion();
+$id_produit = $_GET['edit'];
+$emps=$db->query("SELECT * FROM  panier WHERE id_produit=$id_produit");
+           while ($row = $emps->fetch()) {
+            $id_produit= $row['id_produit'];
+            $image= $row['image'];
+            $prix = $row['prix'];
+            $quantite = $row['quantite'];
+           
+          }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,14 +45,10 @@ $listepanier=$panierP1->afficherpaniers();
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 </head>
-
-
-
 <body class="animsition">
 
 	<!-- Header -->
 	<header class="header1">
-		
 		<!-- Header desktop -->
 		<div class="container-menu-header">
 			<div class="topbar">
@@ -82,42 +85,7 @@ $listepanier=$panierP1->afficherpaniers();
 				</a>
 
 				<!-- Menu -->
-				<div class="wrap_menu">
-					<nav class="menu">
-						<ul class="main_menu">
-							<li>
-								<a href="index.html">Accueil</a> <!--Home-->
-								<ul class="sub_menu">
-									<li><a href="index.html">Homepage V1</a></li>
-									<li><a href="home-02.html">Homepage V2</a></li>
-									<li><a href="home-03.html">Homepage V3</a></li>
-								</ul>
-							</li>
-
-					
-
-							<li class="sale-noti">
-								<a href="product.html">Produits</a>
-							</li>
-
-							<li>
-								<a href="cart.php">Chariot</a>
-							</li>
-
-							<li>
-								<a href="blog.html">Blog</a>
-							</li>
-
-							<li>
-								<a href="about.html">A propos</a>
-							</li>
-
-							<li>
-								<a href="contact.html">Contact</a>
-							</li>
-						</ul>
-					</nav>
-				</div>
+				
 
 				<!-- Header Icon -->
 				<div class="header-icons">
@@ -393,50 +361,37 @@ $listepanier=$panierP1->afficherpaniers();
 	</section>
 
 	<!-- Cart -->
-  <div class="content mt-3">
-            <div class="animated fadeIn">
-                <div class="row">
+  <form method="POST" action="editprod.php">
+        <div class="card-header">
+        
+         </div>
+          <div class="card-header">
+              <strong> Mofifier un panier</strong>
+            </div>
+                                                    <div class="card-body card-block">
+                                                               
+                                                          
+                                                            <div class="row form-group">
+                                                                <div class="col col-md-3"><label for="password-input" class=" form-control-label">Quantité </label></div>
+                                                                <div class="col-12 col-md-9"><input type="number" id="quantite" name="quantite" value="<?php echo $quantite;?>" class="form-control"><small class="help-block form-text" required></small></div>
+                                                            </div>
 
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title"> Panier </strong>
-                            </div>
-                            <div class="card-body">
-                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th> ID du produit </th>
-                                            <th> Image</th>
-                                            <th> Prix </th>
-                                            <th> Quantité </th>
-                                        </tr>
-                                        <?PHP
-                                 foreach($listepanier as $row){
-                                ?>
-                                <tr>
-                                    <td><?PHP echo $row['id_produit']; ?>  </td>
-                                    <td><?PHP echo $row['image']; ?>  </td>
-                                    <td><?PHP echo $row['prix']; ?></td>
-                                    <td><?PHP echo $row['quantite']; ?></td>
-                                    <td><form method="POST" action="supprimerpanier.php">
-                                        <a href="modifierpanier1.php?edit=<?php echo $row['id_produit']; ?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                                        <input class="bin btn-primary waves-effect waves-light m-r-10" type="submit" name="trash" value="trash">
-                                        <input type="hidden" value="<?PHP echo $row['id_produit']; ?>" name="id_produit">
-                                 </form>
-                                    </td>
-                                </tr>
-                                <?php
-                                }
-                                ?> 
-                                    </thead>
-                                   <tbody>
-                                        
-                                        
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                                                          
+                            <input type="hidden" name="id_produit"  value="<?php echo $id_produit;?>" >
+              <div class="card-footer">
+                                   <td>  <button type="submit" class="btn btn-primary btn-sm" >
+                                                 <i class="fa fa-dot-circle-o" ></i> Enregistrer
+                            </button> </td>
+                                                     
+                                                </td>  
+
+                                                   
+                                                </div>
+
+
+                                                             
+                                                        </form>
+
 
 
                 </div>

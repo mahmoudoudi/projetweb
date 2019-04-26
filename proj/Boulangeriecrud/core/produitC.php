@@ -1,5 +1,5 @@
 <?PHP
-include "../config.php";  //connexion a la db
+require_once "../config.php";  //connexion a la db
 class ProduitC {
 	/****************afficher produit***************/
     function afficherProduit($produit)
@@ -136,7 +136,20 @@ class ProduitC {
     /********************************* recherche ************************************/	
 	function rechercherListeProduit($identifiant)
 	{
-		$sql="SELECT * from produits where identifiant=$identifiant "; 
+		$sql="SELECT * from produits where identifiant like '%$identifiant%' or nom like '%$identifiant%' or numcat like '%$identifiant%' or prix like '%$identifiant%' or quantite like '%$identifiant%'    "; 
+		$db = config::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }
+	}
+	/********************************recherche front*******************************/
+	function rechercherFront($identifiant)
+	{
+		$sql="SELECT * from produits where  nom like '%$identifiant%' or  prix like '%$identifiant%'    "; 
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);
@@ -161,6 +174,48 @@ class ProduitC {
         }	
 		
 	}
+	
+	/*****************************Tri pour front par prix*******************/
+	function triPrixAsc()
+	{ $sql="SElECT * From produits order by prix ASC ";  //tout afficher
+		$db = config::getConnexion();
+		try
+		{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+		
+	}
+	
+	function triPrixDesc()
+	{ $sql="SElECT * From produits order by prix DESC ";  //tout afficher
+		$db = config::getConnexion();
+		try
+		{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+		
+	}
+	/****************************** Stat *************************/
+	 public function CountProdcat1()
+    {
+        $db = config::getConnexion();
+        $req1 = $db->query("SELECT * FROM produits Where numcat='1'");
+        return $req1->rowCount();
+    }
+    public function CountProdcat2()
+    {
+        $db = config::getConnexion();
+        $req1 = $db->query("SELECT * FROM produits Where numcat='2'");
+        return $req1->rowCount();
+    }
 }
 
 ?>

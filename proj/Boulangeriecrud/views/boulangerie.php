@@ -465,8 +465,13 @@
 							
 
 							<li class="p-t-4">
-								<a href="product.php" class="s-text13">
+								<a href="boulangerie.php" class="s-text13">
 									Boulangerie
+								</a>
+							</li>
+							<li class="p-t-4">
+								<a href="patisserie.php" class="s-text13">
+									Pâtisserie
 								</a>
 							</li>
 
@@ -475,41 +480,16 @@
 						</ul>
 
 					
-						<h4 class="m-text14 p-b-32">
-							Filtres:
-						</h4>
-
-						<div class="filter-price p-t-22 p-b-50 bo3">
-							<div class="m-text15 p-b-17">
-								Prix
-							</div>
-
-							<div class="wra-filter-bar">
-								<div id="filter-bar"></div>
-							</div>
-
-							<div class="flex-sb-m flex-w p-t-16">
-								<div class="w-size11">
-									<!-- Button -->
-									<button class="flex-c-m size4 bg7 bo-rad-15 hov1 s-text14 trans-0-4">
-										Filtrer
-									</button>
-								</div>
-
-								<div class="s-text3 p-t-10 p-b-10">
-									Entre: <span id="value-lower">200 millmiles</span> - <span id="value-upper">150000 millimes</span>
-								</div>
-							</div>
-						</div>
 
 						
 
 						<div class="search-product pos-relative bo4 of-hidden">
+						 <form method="post" action="Rechfront.php">
 							<input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product" placeholder="Chercher Produit...">
-
-							<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+							<button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4" name="search">
 								<i class="fs-12 fa fa-search" aria-hidden="true"></i>
 							</button>
+						</form>	
 						</div>
 					</div>
 				</div>
@@ -519,25 +499,19 @@
 					<div class="flex-sb-m flex-w p-b-35">
 						<div class="flex-w">
 							<div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-								<select class="selection-2" name="sorting">
+							<form>
+								<select class="selection-2" name="sorting" onChange="location = this.options[this.selectedIndex].value;">
 									<option>Trié par</option>
-									<option>Popularité</option>
-									<option>Prix: croissant</option>
-									<option>Prix: décroissant</option>
+							          
+									<option value="triboulangerieasc.php" >Prix: croissant</option> 
+									
+									
+									<option value="triboulangeriedesc.php" >Prix: décroissant</option>
 								</select>
+							</form>	
 							</div>
 
-							<div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-								<select class="selection-2" name="sorting">
-									<option>Prix</option>
-									<option>$0.00 - $50.00</option>
-									<option>$50.00 - $100.00</option>
-									<option>$100.00 - $150.00</option>
-									<option>$150.00 - $200.00</option>
-									<option>$200.00+</option>
-
-								</select>
-							</div>
+							
 						</div>
 
 						<!--<span class="s-text8 p-t-5 p-b-5">
@@ -549,7 +523,7 @@
 					<div class="row">
 		<?php 
 		foreach( $listeProduits as $row )
-        { ?>
+        { if ($row['numcat']== 1) {?> 
 						<div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
 							<!-- Block2 -->
 							
@@ -586,8 +560,8 @@
 							
 						</div>
 
-		<?php
-		}?>	
+		                   <?php
+		                  }}?>	
 				    </div>
 				</div>
 

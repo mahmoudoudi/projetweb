@@ -1,5 +1,5 @@
 <?PHP
-include "../config2.php"; 
+require_once "../config.php"; 
 class CategorieC {
 	/****************afficher produit***************/
     function afficherCategorie($categorie)
@@ -17,7 +17,7 @@ class CategorieC {
 	function ajouterCategorie($categorie)
 	{
 		$sql="insert into categories (numcat,nomcat) values (:numcat,:nomcat)"; // requete sql
-		$db = config2::getConnexion();
+		$db = config::getConnexion();
 		try
 		{
         $req=$db->prepare($sql);  //???
@@ -41,7 +41,7 @@ class CategorieC {
 	{
 		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
 		$sql="SElECT * From categories";  //tout afficher
-		$db = config2::getConnexion();
+		$db = config::getConnexion();
 		try
 		{
 		$liste=$db->query($sql);
@@ -54,7 +54,7 @@ class CategorieC {
 	/************  supprimer ******************************/
 	function supprimerCategorie($numcat){
 		$sql="DELETE FROM categories where numcat= :numcat"; // supprimer un emp selon un cin donné 
-		$db = config2::getConnexion();
+		$db = config::getConnexion();
         $req=$db->prepare($sql);
 		$req->bindValue(':numcat',$numcat);
 		try{
@@ -69,7 +69,7 @@ class CategorieC {
 	function modifierCategorie($categorie,$numcat){
 		$sql="UPDATE categories SET nomcat=:nomcat WHERE numcat=:numcat"; // modifier un emp selon cin donné
 		
-		$db = config2::getConnexion();
+		$db = config::getConnexion();
 		//$db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
         try{		
         $req=$db->prepare($sql);
@@ -97,7 +97,7 @@ class CategorieC {
 	function recupererCategorie($numcat)
 	{
 		$sql="SELECT * from categories where numcat=$numcat";
-		$db = config2::getConnexion();
+		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);
 		return $liste;

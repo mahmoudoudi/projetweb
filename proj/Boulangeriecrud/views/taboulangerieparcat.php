@@ -118,139 +118,44 @@
 					</div>
 					<ul class="side-menu">
 						<li class="slide">
-							<a class="side-menu__item"  data-toggle="slide" href="#"><i class="side-menu__icon fa fa-laptop"></i><span class="side-menu__label">Dashboard</span><span class="badge badge-orange nav-badge">5</span></a>
+							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-folder-open-o"></i><span class="side-menu__label">Dashboard</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
-								<li><a class="slide-item"  href="index-2.html"><span>Sales Dashboard </span></a></li>
-								<li><a class="slide-item" href="index2.html"><span>Social Dashboard</span></a></li>
-								<li><a class="slide-item" href="index3.html"><span>Marketing Dashboard</span></a></li>
-								<li><a class="slide-item" href="index4.html"><span>IT Dashboard</span></a></li>
-								<li><a class="slide-item" href="index5.html"><span>Crypto Currency </span></a></li>
-							</ul>
-						</li>
-						<li>
-							<a class="side-menu__item" href="widgets.html"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Widgets</span></a>
-						</li>
-						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-envelope-o"></i><span class="side-menu__label">Mail</span><span class="badge badge-warning nav-badge">3</span></a>
-							<ul class="slide-menu">
-								<li><a href="mailinbox.html" class="slide-item"> Mail-inbox</a></li>
-								<li><a href="mail-compose.html" class="slide-item"> Mail-Compose</a></li>
-								<li><a href="viewmail.html" class="slide-item"> View-Email</a></li>
-							</ul>
-						</li>
-						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">Components</span><i class="angle fa fa-angle-right"></i></a>
-							<ul class="slide-menu">
-								<li><a href="cards.html" class="slide-item"> Cards</a></li>
-								<li><a href="dragablecards.html" class="slide-item"> Dragable Cards</a></li>
-								<li><a href="loaders.html" class="slide-item"> Loaders</a></li>
-								<li><a href="chat.html" class="slide-item"> Chat</a></li>
-								<li><a href="treeview.html" class="slide-item"> Tree View</a></li>
-								<li><a href="imgcrop.html" class="slide-item"> Image Crop</a></li>
-								<li><a href="order.html" class="slide-item"> Orders</a></li>
-								<li><a href="search.html" class="slide-item"> Search  Page</a></li>
-								<li><a href="chattypes.html" class="slide-item">Chat Types</a></li>
-								<li><a href="sortable%26nestable.html" class="slide-item">Sortable & Nestable</a></li>
-								<li><a href="counters.html" class="slide-item"> Counters</a></li>
-								<li><a href="rating.html" class="slide-item"> Ratings</a></li>
-								<li><a href="intro.html" class="slide-item"> Intro(tour)</a></li>
-								<li><a href="clipboard.html" class="slide-item"> Clipboard</a></li>
-								<li><a href="dropzone.html" class="slide-item"> Dropzone</a></li>
+								<li><a class="slide-item" href="index-2.html"><span>what?</span></a></li>
+								<li><a class="slide-item" href="index2.html"><span>DDD -D</span></a></li>
+								
 							</ul>
 						</li>
 						<li class="slide">
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-underline"></i><span class="side-menu__label">Produits</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
-								<li><a href="formulaire.html" class="slide-item">Formulaire D'Ajout</a></li>
-								<li><a href="taboulangerie.php" class="slide-item"> Table Boulangerie</a></li>
-								<li><a href="tabpatisserie.php" class="slide-item"> Table Pâtisserie</a></li>
+								<li><a href="formulaire.php" class="slide-item">Formulaire D'Ajout</a></li>
+								<li><a href="taboulangerie.php" class="slide-item"> Table Produits</a></li>
+
 								<li><a href="afficherCat.php" class="slide-item"> Table Catégories</a></li>
 								<li><a href="editable.php" class="slide-item"> Transactions sur les Tables</a></li>
 								
 
 							</ul>
 						</li>
+						<li>
+							<a class="side-menu__item" href="emptypage.html"><i class="side-menu__icon fa fa-laptop"></i><span class="side-menu__label">Gestion Profiles</span></a>
+						</li>
+						<li class="active">
+							<a class="side-menu__item active" href="panierBE.php"><i class="side-menu__icon fe fe-shopping-cart"></i><span class="side-menu__label">Gestion promotion </span></a>
+						</li>
+						<li>
+							<a class="side-menu__item" href="emptypage.html"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">SAV</span></a>
+						</li>
+						<li>
+							<a class="side-menu__item" href="gestionevnmnt.php"><i class="side-menu__icon fa fa-edit"></i><span class="side-menu__label">Gestion Evenements</span></a>
+						</li>
+						<li>
+							<a class="side-menu__item" href="Livraisons.php"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Gestion Livraisons</span></a>
+						</li>
+						<li>
+							<a class="side-menu__item" href="afficherlivreur.php"><i class="side-menu__icon fe fe-map"></i><span class="side-menu__label">Gestion Livreurs</span></a>
+						</li>						
 						
-						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-table"></i><span class="side-menu__label">Tables</span><span class="badge badge-secondary nav-badge1">New</span></a>
-							<ul class="slide-menu">
-								<li><a href="table.php" class="slide-item">Table Boulangerie</a></li>
-								<li><a href="datatables.php" class="slide-item"> Table Patisserie</a></li>
-								<li><a href="editable.php" class="slide-item"> Transactions sur les Tables</a></li>
-							</ul>
-						</li>
-						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-edit"></i><span class="side-menu__label">Forms</span><span class="badge badge-pink nav-badge">6</span></a>
-							<ul class="slide-menu">
-								<li><a href="formelements.html" class="slide-item"> Add </a></li>
-								<li><a href="formadvanced.html" class="slide-item"> </a></li>
-								<li><a href="formeditor.html" class="slide-item"> Form Editor</a></li>
-								<li><a href="formvalidaton.html" class="slide-item"> Form Validation</a></li>
-								<li><a href="formwizard.html" class="slide-item"> Form Wizard</a></li>
-								<li><a href="formelementsadvanced.html" class="slide-item">FormAdvanced Elements</a></li>
-							</ul>
-						</li>
-						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-line-chart"></i><span class="side-menu__label">Charts</span><i class="angle fa fa-angle-right"></i></a>
-							<ul class="slide-menu">
-								<li><a href="chartjs.html" class="slide-item">Chart Js</a></li>
-								<li><a href="flotcharts.html" class="slide-item"> Flot Charts</a></li>
-								<li><a href="barcharts.html" class="slide-item"> Bar Charts</a></li>
-								<li><a href="echart.html" class="slide-item"> ECharts</a></li>
-								<li><a href="chartist.html" class="slide-item"> Chartist</a></li>
-								<li><a href="morris.html" class="slide-item"> Morris Charts</a></li>
-								<li><a href="othercharts.html" class="slide-item"> Other Charts</a></li>
-								<li><a href="googlechart.html" class="slide-item"> Google Charts</a></li>
-								<li><a href="hightchart.html" class="slide-item"> HighCharts</a></li>
-								<li><a href="chartgage.html" class="slide-item"> JustGage Charts</a></li>
-							</ul>
-						</li>
-						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-map"></i><span class="side-menu__label">Maps</span><i class="angle fa fa-angle-right"></i></a>
-							<ul class="slide-menu">
-								<li><a href="maps.html" class="slide-item"> Google Maps</a></li>
-								<li><a href="vector-map.html" class="slide-item">Vector Maps</a></li>
-								<li><a href="mapel.html" class="slide-item">Mapel Maps</a></li>
-							</ul>
-						</li>
-						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-folder-open-o"></i><span class="side-menu__label">Pages</span><i class="angle fa fa-angle-right"></i></a>
-							<ul class="slide-menu">
-								<li><a href="profile.html" class="slide-item"> Profile</a></li>
-								<li><a href="editprofile.html" class="slide-item"> Edit Profile</a></li>
-								<li><a href="pricing-tables.html" class="slide-item"> Pricing Tables</a></li>
-								<li><a href="gallery.html" class="slide-item"> Gallery</a></li>
-								<li><a href="portfolio.html" class="slide-item"> Portfolio</a></li>
-								<li><a href="terms.html" class="slide-item"> Terms and Conditions</a></li>
-								<li><a href="faq.html" class="slide-item"> FAQs</a></li>
-								<li><a href="landingpage.html" class="slide-item"> Landing Page</a></li>
-								<li><a href="emptypage.html" class="slide-item"> Empty  Page</a></li>
-								<li><a href="blog.html" class="slide-item"> Blog</a></li>
-								<li><a href="blog-detail.html" class="slide-item"> Single Blog Post</a></li>
-							</ul>
-						</li>
-						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-shopping-cart"></i><span class="side-menu__label">E-Commerce</span><span class="badge badge-danger nav-badge">4</span></a>
-							<ul class="slide-menu">
-								<li><a href="shop.html" class="slide-item"> Shop</a></li>
-								<li><a href="product-details.html" class="slide-item">Product Details</a></li>
-								<li><a href="product.html" class="slide-item">Product Details-1</a></li>
-								<li><a href="shop-cart.html" class="slide-item"> Shop Cart</a></li>
-							</ul>
-						</li>
-						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cube"></i><span class="side-menu__label">Custom Pages</span><i class="angle fa fa-angle-right"></i></a>
-							<ul class="slide-menu">
-								<li><a href="register.html" class="slide-item"> Register</a></li>
-								<li><a href="login.html" class="slide-item"> Login</a></li>
-								<li><a href="forgot.html" class="slide-item"> Forgot Password</a></li>
-								<li><a href="reset.html" class="slide-item"> Reset Password</a></li>
-								<li><a href="under-construction.html" class="slide-item"> Under Construction</a></li>
-								<li><a href="lockscreen.html" class="slide-item"> Lock Screen</a></li>
-								<li><a href="404.html" class="slide-item"> 404</a></li>
-								<li><a href="505.html" class="slide-item"> 505</a></li>
-							</ul>
-						</li>
 					</ul>
 				</aside>
 				<!--aside closed-->

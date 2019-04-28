@@ -1,10 +1,18 @@
+<meta charset="UTF-8">
+
+<!--===============================================================================================-->
+<script src="gader.js"></script>
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="licorne.css">
+
+
 <?PHP 
 include "../entities/client.php";
 include "../core/clientC.php";
 include "../entities/reclamation.php";
 include "../core/reclamationC.php";
 $clientC=new clientC();
-$listeclient=$clientC->afficherclient();
+$listeclient=$clientC->afficherclienttriendc();
 $reclamationC=new reclamationC();
 $listereclamation=$reclamationC->afficherReclamations();
 
@@ -12,13 +20,13 @@ $listereclamation=$reclamationC->afficherReclamations();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
+<script src="gader.js"></script>
 <!-- Mirrored from www.spruko.com/demo/splite/formelements.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Feb 2019 18:34:42 GMT -->
 <head>
 
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Splite-Admin Dashboard</title>
+		<title>Gestion de clients</title>
 
 		<!--Favicon -->
 		<link rel="icon" href="favicon.html" type="image/x-icon"/>
@@ -55,7 +63,7 @@ $listereclamation=$reclamationC->afficherReclamations();
 			    <!--anv open-->
 				<nav class="navbar navbar-expand-lg main-navbar">
 					<a class="header-brand" href="index-2.html">
-						<img src="assets/img/brand/logo.png" class="header-brand-img" alt="Splite-Admin  logo">
+						<!--<img src="assets/img/brand/logo.png" class="header-brand-img" alt="Splite-Admin  logo"> -->
 					</a>
 					<form class="form-inline mr-auto">
 						<ul class="navbar-nav mr-2">
@@ -314,25 +322,24 @@ $listereclamation=$reclamationC->afficherReclamations();
 										<h4>Ajouter un client </h4>
 									</div>
 									<div class="card-body">
-                                     
-										<form class="form-horizontal"  method="POST" action="ajoutclient.php">
+										<form class="form-horizontal" id="form" method="POST" action="ajoutclient.php">
 											<div class="form-group row">
 												<label class="col-md-3 col-form-label"  >Identifiant du client </label>
 												<div class="col-md-9">
-													<input type="text" class="form-control" name="idc" onblur="verifref(this);">
+													<input type="text" class="form-control" id="idc" name="idc" onblur="verifref(this);">
 												</div>
 											</div>
 											<div class="form-group row">
 												<label class="col-md-3 col-form-label"  >Nom de compte </label>
 												<div class="col-md-9">
-													<input type="text" class="form-control" name="ndc" onblur="verifnom(this);">
+													<input type="text" class="form-control" id="ndc" name="ndc" onblur="verifnom(this);">
 												</div>
 											</div>
 											
 											<div class="form-group row mb-0">
 												<label class="col-md-3 col-form-label">Mot de passe</label>
 												<div class="col-md-9">
-														<input type="text" class="form-control" name="mdp" onblur="verifnom(this);">
+														<input type="text" class="form-control" id="mdp" name="mdp" onblur="verifnom(this);">
 												</div>
 											</div>
 											</br>
@@ -340,7 +347,7 @@ $listereclamation=$reclamationC->afficherReclamations();
 											<div class="form-group row">
 												<label class="col-md-3 col-form-label" for="example-email">Categorie du client</label>
 												<div class="col-md-9">
-													<select class="form-control" name="categoriec">
+													<select class="form-control" id="categoriec" name="categoriec">
 														<option>régulier</option>
 														<option>ordinaire</option>
 														
@@ -349,50 +356,37 @@ $listereclamation=$reclamationC->afficherReclamations();
 											</div>
 										
 											
-													<button type="submit" class="btn btn-primary mt-1 mb-0">Ajouter</button>
-                                        </form>
+													<button type="submit" class="btn btn-primary mt-1 mb-0" onclick = "controle2()">Ajouter</button>
+
+
 
 									</div>
 								</div>
 								 <!--Ajout reclamation -->
 								 
-							<div class="card">
+								 	<div class="card">
 									<div class="card-header">
 										<h4>Passer une réclamation </h4>
 									</div>
 									<div class="card-body">
-                                           <?PHP
-
-if (isset($_GET['idr'])){
-	
-    $result=$reclamationC->recupererReclamation($_GET['idr']);
-	foreach($result as $row){
-		$idr=$row['idr'];
-		$nom=$row['nom'];
-		$prenom=$row['prenom'];
-		$tel=$row['tel'];
-		$adresse=$row['adresse'];
-		$mail=$row['mail'];
-		$description=$row['description'];
-?>
-										<form class="form-horizontal"  method="POST" >
+										<form class="form-horizontal"  method="POST" action="ajoutclient.php">
 											<div class="form-group row">
 												<label class="col-md-3 col-form-label"  >ID réclamation </label>
 												<div class="col-md-9">
-													<input type="text" class="form-control" name="idr"  value="<?PHP echo $idr ?>" onblur="verifref(this);">
+													<input type="text" class="form-control" name="idr" onblur="verifref(this);">
 												</div>
 											</div>
 											<div class="form-group row">
 												<label class="col-md-3 col-form-label"  >Nom du client </label>
 												<div class="col-md-9">
-													<input type="text" class="form-control" name="nom"  value="<?PHP echo $nom ?>" onblur="verifnom(this);">
+													<input type="text" class="form-control" name="nom" onblur="verifnom(this);">
 												</div>
 											</div>
 											
 											<div class="form-group row mb-0">
 												<label class="col-md-3 col-form-label">Prenom du client</label>
 												<div class="col-md-9">
-														<input type="text" class="form-control" name="prenom" value="<?PHP echo $prenom ?>" onblur="verifnom(this);">
+														<input type="text" class="form-control" name="prenom" onblur="verifnom(this);">
 												</div>
 											</div>
 											</br>
@@ -400,50 +394,37 @@ if (isset($_GET['idr'])){
 											<div class="form-group row mb-0">
 												<label class="col-md-3 col-form-label">Numero telephone</label>
 												<div class="col-md-9">
-														<input type="text" class="form-control" name="tel" value="<?PHP echo $tel ?>" onblur="verifnom(this);">
+														<input type="text" class="form-control" name="tel" onblur="verifnom(this);">
 												</div>
 											</div>
 											</br>
 											<div class="form-group row mb-0">
 												<label class="col-md-3 col-form-label">Mail</label>
 												<div class="col-md-9">
-														<input type="text" class="form-control" name="mail" value="<?PHP echo $mail ?>" onblur="verifnom(this);">
+														<input type="text" class="form-control" name="mail" onblur="verifnom(this);">
 												</div>
 											</div>
 											</br>
 										<div class="form-group row mb-0">
 												<label class="col-md-3 col-form-label">Adresse</label>
 												<div class="col-md-9">
-														<input type="text" class="form-control" name="adresse" value="<?PHP echo $adresse ?>" onblur="verifnom(this);">
+														<input type="text" class="form-control" name="adresse" onblur="verifnom(this);">
 												</div>
 											</div>
 										</br>
 										<div class="form-group row mb-0">
 												<label class="col-md-3 col-form-label">Description</label>
 												<div class="col-md-9">
-												<input type="text" class="form-control" value="<?PHP echo $description ?>" name="description" onblur="verifnom(this);"></br>
-
+														<input type="text" class="form-control" name="description" onblur="verifnom(this);">
 												</div>
 											</div>
+										</br>
 											
-													<input type="submit" class="btn btn-primary mt-1 mb-0" name="modifier" value="Modifier">
-                                                    <input type="hidden" name="idr_ini" value="<?PHP echo $_GET['idr'];?>" >
-                                        </form> 
-                                        <?PHP
-	}
-}
-if (isset($_POST['modifier'])){
-	$reclamation=new reclamation($_POST['nom'],$_POST['prenom'],$_POST['tel'],$_POST['adresse'],$_POST['mail'],$_POST['description']);
-	$reclamationC->modifierReclamation($reclamation,$_POST['idr_ini']);
-	echo $_POST['idr_ini'];
-		//header('Location: afficherReclamation.php');
-		echo "<META http-equiv='refresh' content='0;URL=interface.php'>";
+													<button type="submit" class="btn btn-primary mt-1 mb-0">Ajouter</button>
 
-}
-?>
 
 									</div>
-							</div>
+								</div>
 								
 								
 						
@@ -503,8 +484,17 @@ if (isset($_POST['modifier'])){
 												</tr>
 												<?php
 											}?>
+						<form method="POST" action="triClientndc.php">
+<input type="submit" name="tri" value="Trier par identifiant" style="  background-color: #555555;border: none;color: white;padding: 15px 32px;text-align: center; font-size: 16px;margin: 4px 2px;border-radius: 12px;
+cursor: pointer;" >
+</form>
+	<form method="POST" action="triClientndc.php">
+<input type="submit" name="tri2" value="Trier par nom de compte" style="  background-color: #555555;border: none;color: white;padding: 15px 32px;text-align: center; font-size: 16px;margin: 4px 2px;border-radius: 12px;
+cursor: pointer;" >
+</form>	  
 											</tbody>
-										
+
+
 
 									</table>
 										</div>
@@ -556,7 +546,7 @@ if (isset($_POST['modifier'])){
 																
 																<td><form method="POST" action="supprimerReclamation.php">
 														<span ><input  type="submit" class="btn btn-danger btn-rounded btn-sm my-0" name="Supprimer" value="Supprimer">
-															<input type="hidden" value="<?php echo $row['idr']; ?>" name="idr_ini"></span>
+															<input type="hidden" value="<?php echo $row['idr']; ?>" name="ids"></span>
 														
 													</form>
 													</td>

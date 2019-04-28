@@ -1,14 +1,38 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 	
-<!-- Mirrored from www.spruko.com/demo/splite/formelements.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Feb 2019 18:34:42 GMT -->
+<!-- Mirrored from www.spruko.com/demo/splite/editprofile.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Feb 2019 18:35:01 GMT -->
 <head>
+	<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.png"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/themify/themify-icons.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/elegant-font/html-css/style.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/slick/slick.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
 
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Splite-Admin Dashboard</title>
+		<title>Ajout client</title>
 
 		<!--Favicon -->
 		<link rel="icon" href="favicon.html" type="image/x-icon"/>
@@ -16,14 +40,14 @@
 		<!--Bootstrap.min css-->
 		<link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
 
+		<!--mCustomScrollbar css-->
+		<link rel="stylesheet" href="assets/plugins/scroll-bar/jquery.mCustomScrollbar.css">
+
 		<!--Icons css-->
 		<link rel="stylesheet" href="assets/css/icons.css">
 
 		<!--Style css-->
 		<link rel="stylesheet" href="assets/css/style.css">
-
-		<!--mCustomScrollbar css-->
-		<link rel="stylesheet" href="assets/plugins/scroll-bar/jquery.mCustomScrollbar.css">
 
 		<!--Sidemenu css-->
 		<link rel="stylesheet" href="assets/plugins/toggle-menu/sidemenu.css">
@@ -38,14 +62,14 @@
 
 		<div id="spinner"></div>
 
-		<!--app open-->
+        <!--app open-->
 		<div id="app" class="page">
-			<div class="main-wrapper" >
+			<div class="main-wrapper">
 
-			    <!--anv open-->
+			    <!--nav open-->
 				<nav class="navbar navbar-expand-lg main-navbar">
 					<a class="header-brand" href="index-2.html">
-						<img src="assets/img/brand/logo-white.png" class="header-brand-img" alt="Splite-Admin  logo">
+					<!--	<img src="assets/img/brand/logo-white.png" class="header-brand-img" alt="Splite-Admin  logo"> -->
 					</a>
 					<form class="form-inline mr-auto">
 						<ul class="navbar-nav mr-2">
@@ -217,16 +241,12 @@
 						</li>
 						<li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg d-flex">
 								<span class="mr-3 mt-2 d-none d-lg-block ">
-									<span class="text-white">Hello,<span class="ml-1"> Alica Nestle</span></span>
+									<span class="text-white">Bienvenue,<span class="ml-1"> Admin</span></span>
 								</span>
-							<span><img src="assets/img/avatar/avatar-3.jpg" alt="profile-user" class="rounded-circle w-32 mr-2"></span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right">
 								<div class=" dropdown-header noti-title text-center border-bottom pb-3">
-									<h5 class="text-capitalize text-dark mb-1">Alica Nestle</h5>
-									<small class="text-overflow m-0"> Web-Designer</small>
 								</div>
-								<a class="dropdown-item" href="profile.html"><i class="mdi mdi-account-outline mr-2"></i> <span>My profile</span></a>
 								<a class="dropdown-item" href="#"><i class="mdi mdi-settings mr-2"></i> <span>Settings</span></a>
 								<a class="dropdown-item" href="#"><i class=" mdi mdi-message-outline mr-2"></i> <span>Mails</span></a>
 								<a class="dropdown-item" href="#"><i class=" mdi mdi-account-multiple-outline mr-2"></i> <span>Friends</span></a>
@@ -244,11 +264,10 @@
 					<div class="app-sidebar__user">
 						<div class="dropdown user-pro-body text-center">
 							<div class="nav-link pl-1 pr-1 leading-none ">
-								<img src="assets/img/avatar/avatar-3.jpg" alt="user-img" class="avatar-xl rounded-circle mb-1">
 								<span class="pulse bg-success" aria-hidden="true"></span>
 							</div>
 							<div class="user-info">
-								<h6 class=" mb-1 text-dark">Alica Nestle</h6>
+								<h6 class=" mb-1 text-dark">Admin</h6>
 								<span class="text-muted app-sidebar__user-name text-sm"> Web-Designer</span>
 							</div>
 						</div>
@@ -344,7 +363,7 @@
 						<li class="slide">
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-edit"></i><span class="side-menu__label">Forms</span><span class="badge badge-pink nav-badge">6</span></a>
 							<ul class="slide-menu">
-								<li><a href="formelements.html" class="slide-item"> Interface client</a></li>
+								<li><a href="formelements.html" class="slide-item"> Form Elements</a></li>
 								<li><a href="formadvanced.html" class="slide-item"> Advanced Form</a></li>
 								<li><a href="formeditor.html" class="slide-item"> Form Editor</a></li>
 								<li><a href="formvalidaton.html" class="slide-item"> Form Validation</a></li>
@@ -379,7 +398,7 @@
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-folder-open-o"></i><span class="side-menu__label">Pages</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
 								<li><a href="profile.html" class="slide-item"> Profile</a></li>
-								<li><a href="editprofile.html" class="slide-item"> Edit Profile</a></li>
+								<li><a href="editprofile.html" class="slide-item"> Ajouter un client</a></li>
 								<li><a href="pricing-tables.html" class="slide-item"> Pricing Tables</a></li>
 								<li><a href="gallery.html" class="slide-item"> Gallery</a></li>
 								<li><a href="portfolio.html" class="slide-item"> Portfolio</a></li>
@@ -417,360 +436,89 @@
 				</aside>
 				<!--aside closed-->
 
-                <!--app-content open-->
+				<!--app-content open-->
 				<div class="app-content">
 					<section class="section">
 
-                        <!--page-header open-->
+					    <!--page-header open-->
 						<div class="page-header">
-							<h4 class="page-title">Interface client</h4>
+							<h4 class="page-title">Ajouter client</h4>
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#" class="text-light-color">Forms</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Form Elements</li>
+								<li class="breadcrumb-item"><a href="#" class="text-light-color">Pages</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Ajouter client</li>
 							</ol>
 						</div>
 						<!--page-header closed-->
 
                         <!--row open-->
-						<div class="row">
-							<div class="col-12">
+											<form class="leave-comment" form method="POST" action="ajoutclient.php">
+
+							<div class="col-lg-12 col-xl-8 col-md-12 col-sm-12">
 								<div class="card">
 									<div class="card-header">
-										<h4>Client</h4>
-									</div>
-									<div class="card-body">
-										<?PHP
-include "../entities/client.php";
-include "../core/clientC.php";
-if (isset($_GET['idc'])){
-	$clientC=new clientC();
-    $result=$clientC->getidc($_GET['idc']);
-	foreach($result as $row){
-		$idc=$row['idc'];
-		$ndc=$row['ndc'];
-		$mdp=$row['mdp'];
-		$categoriec=$row['categoriec'];
-		
-?>
-										<form class="form-horizontal" method="POST" >
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label"  >ID client </label>
-												<div class="col-md-9">
-												<input type="text" class="form-control" readonly onblur="verifref(this);" name="idc" value="<?PHP echo $idc ?>">
-												</div>
-											</div>
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">Nom de compte </label>
-												<div class="col-md-9">
-													<input type="text" class="form-control" onblur="verifnom(this);" name="ndc" value="<?PHP echo $ndc?>"  >
-												</div>
-											</div>
-											
-								<div class="form-group row mb-0">
-												<label class="col-md-3 col-form-label">Mot de passe</label>
-												<div class="col-md-9">
-												<input type="text" class="form-control" onblur="verifnom(this);" name="mdp" value="<?PHP echo $mdp?>"  >
-												</div>
-											</div>
-								</br>
-			
-											
-											
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label" for="example-email">Categorie</label>
-												<div class="col-md-9">
-													<select class="form-control" name="categoriec" value="<?PHP echo $categoriec?>">
-														<option>fidéle</option>
-														<option>ordinaire</option>
-														
-													</select>
-												</div>
-											</div>
-										<!--	<div class="form-group row">
-												<label class="col-md-3 col-form-label">Password</label>
-												<div class="col-md-9">
-													<input type="password" class="form-control" value="password">
-												</div>
-											</div>
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">Placeholder</label>
-												<div class="col-md-9">
-													<input type="text" class="form-control" placeholder="text">
-												</div>
-											</div>
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">Text area</label>
-												<div class="col-md-9">
-													<textarea class="form-control" rows="6">Hiiiii.....</textarea>
-												</div>
-											</div>
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">Readonly</label>
-												<div class="col-md-9">
-													<input type="text" class="form-control" readonly="" value="Readonly value">
-												</div>
-											</div>
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">Disabled</label>
-												<div class="col-md-9">
-													<input type="text" class="form-control" disabled="" value="Disabled value">
-												</div>
-											</div>
--->
-											
-											<button type="submit" class="btn btn-primary mt-1 mb-0"  value="modifier" name="modifier">Modifier</button>
-											<input type="hidden" name="idcc" value="<?PHP echo $_GET['idc'];?>">
-
-										</form>
-										<?PHP
-	}
-}
-if (isset($_POST['modifier'])){
-	$client=new client( $_POST['idc'],$_POST['ndc'],$_POST['mdp'],$_POST['categoriec'] );
-	$clientC->modifierclient($client,$_POST['idcc']);
-  echo "<META http-equiv='refresh' content='0;URL=interface.php'>";
-}
-?>
-																	
-
-									</div>
-								</div>
-							</div>
-
-
-
-                        <!--row open-->
-					<!--
-						<div class="row">
-							<div class="col-lg-12 col-xl-6 col-md-12 col-sm-12">
-								<div class="card">
-									<div class="card-header">
-										<h4>Vertical Form</h4>
-									</div>
-									<div class="card-body">
-										<form >
-											<div class="">
-												<div class="form-group">
-													<label for="exampleInputEmail1">Email address</label>
-													<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-												</div>
-												<div class="form-group">
-													<label for="exampleInputPassword1">Password</label>
-													<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-												</div>
-												<div class="checkbox">
-													<div class="custom-checkbox custom-control">
-														<input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-1">
-														<label for="checkbox-1" class="custom-control-label">Check me Out</label>
-													</div>
-												</div>
-											</div>
-											<button type="submit" class="btn btn-primary mt-1 mb-0">Submit</button>
-										</form>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-12 col-xl-6 col-md-12 col-sm-12">
-								<div class="card">
-									<div class="card-header">
-										<h4>Horizontal Form</h4>
-									</div>
-									<div class="card-body">
-										<form class="form-horizontal" >
-											<div class="form-group row">
-												<label for="inputName" class="col-md-3 col-form-label">User Name</label>
-												<div class="col-md-9">
-													<input type="text" class="form-control" id="inputName" placeholder="Name">
-												</div>
-											</div>
-											<div class="form-group row">
-												<label for="inputEmail3" class="col-md-3 col-form-label">Email</label>
-												<div class="col-md-9">
-													<input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-												</div>
-											</div>
-											<div class="form-group row">
-												<label for="inputPassword3" class="col-md-3 col-form-label">Password</label>
-												<div class="col-md-9">
-													<input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-												</div>
-											</div>
-											<div class="form-group mb-0 row justify-content-end">
-												<div class="col-md-9">
-													<div class="checkbox">
-														<div class="custom-checkbox custom-control">
-															<input type="checkbox" data-checkboxes="mygroup" class="custom-control-input" id="checkbox-2">
-															<label for="checkbox-2" class="custom-control-label">Check me Out</label>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="form-group mb-0 mt-2 row justify-content-end">
-												<div class="col-md-9">
-													<button type="submit" class="btn btn-info">Sign in</button>
-													<button type="submit" class="btn btn-primary">Cancel</button>
-												</div>
-											</div>
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-
-                      
-						<div class="row">
-							<div class="col-12 ">
-								<div class="card">
-									<div class="card-header">
-										<h4>Different Height</h4>
-									</div>
-									<div class="card-body">
-										<input class="form-control input-lg" type="text" placeholder=".input-lg">
-										<br>
-										<input class="form-control" type="text" placeholder="Default input">
-										<br>
-										<input class="form-control input-sm" type="text" placeholder=".input-sm">
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div class="row">
-							<div class="col-12">
-								<div class="card">
-									<div class="card-header">
-										<h4>Different Width</h4>
+										<h4>Ajouter un client</h4>
 									</div>
 									<div class="card-body">
 										<div class="row">
-											<div class="col-md-3 m-t-5 m-b-5">
-												<input type="text" class="form-control" placeholder=".col-xs-3">
+											<div class="col-lg-6 col-md-12">
+												<div class="form-group">
+																																																<h4> Identifiant : </h4>
+																				
+
+													<input type="number" class="form-control" id="idc" name="idc" placeholder="ID client">
+												</div>
 											</div>
-											<div class="col-md-4 m-t-5 m-b-5">
-												<input type="text" class="form-control" placeholder=".col-xs-4">
-											</div>
-											<div class="col-md-5 m-t-5 m-b-5">
-												<input type="text" class="form-control" placeholder=".col-xs-5">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					-->
-					<!--	<div class="row">
-							<div class="col-lg-12">
-								<div class="card">
-									<div class="card-header">
-										<h4>Form Input Grid</h4>
-									</div>
-									<div class="card-body">
-										<div class="row">
-											<div class="col-md-12 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder=".col-md-12" class="form-control">
-											</div>
-											<div class="col-md-6 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder=".col-md-6" class="form-control">
-											</div>
-											<div class="col-md-6 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder=".col-md-6" class="form-control">
-											</div>
-											<div class="col-md-4 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder=".col-md-4" class="form-control">
-											</div>
-											<div class="col-md-4 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder=".col-md-4" class="form-control">
-											</div>
-											<div class="col-md-4 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder=".col-md-4" class="form-control">
-											</div>
-											<div class="col-md-3 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder=".col-md-3" class="form-control">
-											</div>
-											<div class="col-md-3 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder=".col-md-3" class="form-control">
-											</div>
-											<div class="col-md-3 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder=".col-md-3" class="form-control">
-											</div>
-											<div class="col-md-3 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder=".col-md-3" class="form-control">
-											</div>
-											<div class="col-md-2 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder=".col-md-2" class="form-control">
-											</div>
-											<div class="col-md-2 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder=".col-md-2" class="form-control">
-											</div>
-											<div class="col-md-2 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder=".col-md-2" class="form-control">
-											</div>
-											<div class="col-md-2 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder=".col-md-2" class="form-control">
-											</div>
-											<div class="col-md-2 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder=".col-md-2" class="form-control">
-											</div>
-											<div class="col-md-2 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder=".col-md-2" class="form-control">
-											</div>
-											<div class="col-md-1 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder="col-1" class="form-control">
-											</div>
-											<div class="col-md-1 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder="col-1" class="form-control">
-											</div>
-											<div class="col-md-1 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder="col-1" class="form-control">
-											</div>
-											<div class="col-md-1 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder="col-1" class="form-control">
-											</div>
-											<div class="col-md-1 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder="col-1" class="form-control">
-											</div>
-											<div class="col-md-1 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder="col-1" class="form-control">
-											</div>
-											<div class="col-md-1 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder="col-1" class="form-control">
-											</div>
-											<div class="col-md-1 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder="col-1" class="form-control">
-											</div>
-											<div class="col-md-1 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder="col-1" class="form-control">
-											</div>
-											<div class="col-md-1 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder="col-1" class="form-control">
-											</div>
-											<div class="col-md-1 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder="col-1" class="form-control">
-											</div>
-											<div class="col-md-1 col-sm-12 col-xs-12 form-group">
-												<input type="text" placeholder="col-1" class="form-control">
+											<div class="col-lg-6 col-md-12">
+												<div class="form-group">
+																														<h4> Nom de compte : </h4>
+
+													<input type="text" class="form-control" id="ndc" name="ndc" placeholder="Nom de compte">
+												</div>
 											</div>
 										</div>
-									</div>
-								</div>
+										<div class="form-group">
+																							<h4> Mot de passe : </h4>
+
+											<input type="text" class="form-control" id="mdp" name="mdp" placeholder="Mot de passe">
+										</div>
+										
+										
+											<div class="form-group">
+												<h4> Catégorie : </h4>
+																							<label for="exampleInputEmail1">client ordinaire   </label> 
+																							
+
+<input type="radio"  id="categoriec" name="categoriec" value="ordinaire">
+</br>
+																							<label for="exampleInputEmail1">client fidéle   </label> 
+
+<input type="radio"  id="categoriec" name="categoriec" value="fidele "></td>
+
+										</div>
+										
+										<button type="submit" class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4", >
+							Ajouter client
+							</button>
+										
+										
 							</div>
 						</div>
--->
+											</form>
+						<!--row closed-->
+
 					</section>
 				</div>
 				<!--app-content closed-->
 
 				<footer class="main-footer">
 					<div class="text-center">
-					
+						Copyright &copy;Splite 2019. Design By<a href="https://spruko.com/"> Spruko</a>
 					</div>
 				</footer>
 
 				<!-- Popupchat open-->
 				<div class="popup-box chat-popup" id="qnimate">
 					<div class="popup-head">
-						<div class="popup-head-left pull-left"><img src="assets/img/avatar/avatar-3.jpg" alt="iamgurdeeposahan" class="mr-2"> Youssef Ghedas</div>
 						<div class="popup-head-right pull-right">
 							<div class="btn-group">
 								<button class="chat-header-button" data-toggle="dropdown" type="button" aria-expanded="false">
@@ -792,13 +540,9 @@ if (isset($_POST['modifier'])){
 							</div>
 							<div class="direct-chat-msg">
 								<div class="direct-chat-info clearfix">
-									<span class="direct-chat-name float-left">Youssef Ghedas</span>
 									<span class="direct-chat-timestamp float-right">7:40 Am</span>
 								</div>
-								<img class="direct-chat-img" src="assets/img/avatar/avatar-3.jpg" alt="message user image">
-								<div class="direct-chat-text">
-									Hello. How are you today?
-								</div>
+								
 							</div>
 							<div class="direct-chat-msg right">
 								<div class="direct-chat-info clearfix">
@@ -815,7 +559,6 @@ if (isset($_POST['modifier'])){
 							</div>
 							<div class="direct-chat-msg doted-border">
 								<div class="direct-chat-info clearfix">
-									<span class="direct-chat-name float-left">Alica Nestle</span>
 									<span class="direct-chat-timestamp float-right">6:20 Am</span>
 								</div>
 								<img alt="iamgurdeeposahan" src="assets/img/avatar/avatar-3.jpg" class="direct-chat-img"><!-- /.direct-chat-img -->
@@ -858,7 +601,6 @@ if (isset($_POST['modifier'])){
 		<a href="#" id="addClass"><i class="ti-comment"></i></a>
 
 		<!--Jquery.min js-->
-		<script type="text/javascript" src="js/form.js"></script>
 		<script src="assets/js/jquery.min.js"></script>
 
 		<!--popper js-->
@@ -887,11 +629,9 @@ if (isset($_POST['modifier'])){
 
 		<!--Scripts js-->
 		<script src="assets/js/scripts.js"></script>
-		<script src="js/form.js"></script>
 		<script src="assets/js/jquery.showmore.js"></script>
 
+	</body>
 
-	 </body>
-
-<!-- Mirrored from www.spruko.com/demo/splite/formelements.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Feb 2019 18:34:42 GMT -->
+<!-- Mirrored from www.spruko.com/demo/splite/editprofile.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Feb 2019 18:35:01 GMT -->
 </html>

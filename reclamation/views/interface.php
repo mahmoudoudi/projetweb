@@ -1,3 +1,7 @@
+<?php session_start();?>
+<meta charset="UTF-8">
+
+
 <?PHP 
 include "../entities/client.php";
 include "../core/clientC.php";
@@ -9,16 +13,36 @@ $reclamationC=new reclamationC();
 $listereclamation=$reclamationC->afficherReclamations();
 
 
+
+
+
+
+ require_once  '../config.php';
+$db=config1::getConnexion();
+  
+   $req1= $db->query("SELECT count(idc) as total ,categoriec FROM clients GROUP by categoriec   ");
+   $req1->execute();
+                $liste= $req1->fetchALL(PDO::FETCH_OBJ);
+                    $req2= $db->query("SELECT count(idc) as nb FROM clients " );
+    $nb = $req2->fetch();
+$dataPoints = array();
+foreach ($liste as $tache) {
+    $dataPoints[] = array('y' => $tache->total , 'label' => $tache->categoriec);
+}
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
+<script src="gader.js"></script>
 <!-- Mirrored from www.spruko.com/demo/splite/formelements.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Feb 2019 18:34:42 GMT -->
 <head>
 
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Splite-Admin Dashboard</title>
+		<title>Gestion de clients</title>
 
 		<!--Favicon -->
 		<link rel="icon" href="favicon.html" type="image/x-icon"/>
@@ -31,6 +55,29 @@ $listereclamation=$reclamationC->afficherReclamations();
 
 		<!--Style css-->
 		<link rel="stylesheet" href="assets/css/style.css">
+		<script>
+window.onload = function() {
+ 
+ 
+var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    title: {
+        text: "Statistiques categorie clients"
+    },
+    subtitles: [{
+        //text: "November 2017"
+    }],
+    data: [{
+        type: "pie",
+        yValueFormatString: "#,##",
+        indexLabel: "Valeur : {label} ({y} Produit)",
+        dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+    }]
+});
+chart.render();
+ 
+}
+</script>
 
 		<!--mCustomScrollbar css-->
 		<link rel="stylesheet" href="assets/plugins/scroll-bar/jquery.mCustomScrollbar.css">
@@ -55,7 +102,7 @@ $listereclamation=$reclamationC->afficherReclamations();
 			    <!--anv open-->
 				<nav class="navbar navbar-expand-lg main-navbar">
 					<a class="header-brand" href="index-2.html">
-						<img src="assets/img/brand/logo.png" class="header-brand-img" alt="Splite-Admin  logo">
+						<!--<img src="assets/img/brand/logo.png" class="header-brand-img" alt="Splite-Admin  logo"> -->
 					</a>
 					<form class="form-inline mr-auto">
 						<ul class="navbar-nav mr-2">
@@ -308,31 +355,30 @@ $listereclamation=$reclamationC->afficherReclamations();
 						</div>
 						<!--page-header closed-->
 
-                        <!--row open-->
+                        <!--Ajout client-->
 								<div class="card">
 									<div class="card-header">
 										<h4>Ajouter un client </h4>
 									</div>
 									<div class="card-body">
-                                     
-										<form class="form-horizontal"  method="POST" action="ajoutclient.php">
+										<form class="form-horizontal" id="form" method="POST" action="ajoutclient.php">
 											<div class="form-group row">
 												<label class="col-md-3 col-form-label"  >Identifiant du client </label>
 												<div class="col-md-9">
-													<input type="text" class="form-control" name="idc" onblur="verifref(this);">
+													<input type="text" class="form-control" id="idc" name="idc" onblur="verifref(this);">
 												</div>
 											</div>
 											<div class="form-group row">
 												<label class="col-md-3 col-form-label"  >Nom de compte </label>
 												<div class="col-md-9">
-													<input type="text" class="form-control" name="ndc" onblur="verifnom(this);">
+													<input type="text" class="form-control" id="ndc" name="ndc" onblur="verifnom(this);">
 												</div>
 											</div>
 											
 											<div class="form-group row mb-0">
 												<label class="col-md-3 col-form-label">Mot de passe</label>
 												<div class="col-md-9">
-														<input type="text" class="form-control" name="mdp" onblur="verifnom(this);">
+														<input type="text" class="form-control" id="mdp" name="mdp" onblur="verifnom(this);">
 												</div>
 											</div>
 											</br>
@@ -340,8 +386,8 @@ $listereclamation=$reclamationC->afficherReclamations();
 											<div class="form-group row">
 												<label class="col-md-3 col-form-label" for="example-email">Categorie du client</label>
 												<div class="col-md-9">
-													<select class="form-control" name="categoriec">
-														<option>régulier</option>
+													<select class="form-control" id="categoriec" name="categoriec">
+														<option>fidéle</option>
 														<option>ordinaire</option>
 														
 													</select>
@@ -349,50 +395,37 @@ $listereclamation=$reclamationC->afficherReclamations();
 											</div>
 										
 											
-													<button type="submit" class="btn btn-primary mt-1 mb-0">Ajouter</button>
-                                        </form>
+													<button type="submit" class="btn btn-primary mt-1 mb-0" onclick = "controle2()">Ajouter</button>
+
+
 
 									</div>
 								</div>
 								 <!--Ajout reclamation -->
-								 
-							<div class="card">
+								  <!--
+								 	<div class="card">
 									<div class="card-header">
 										<h4>Passer une réclamation </h4>
 									</div>
 									<div class="card-body">
-                                           <?PHP
-
-if (isset($_GET['idr'])){
-	
-    $result=$reclamationC->recupererReclamation($_GET['idr']);
-	foreach($result as $row){
-		$idr=$row['idr'];
-		$nom=$row['nom'];
-		$prenom=$row['prenom'];
-		$tel=$row['tel'];
-		$adresse=$row['adresse'];
-		$mail=$row['mail'];
-		$description=$row['description'];
-?>
-										<form class="form-horizontal"  method="POST" >
+										<form class="form-horizontal"  method="POST" action="ajoutclient.php">
 											<div class="form-group row">
 												<label class="col-md-3 col-form-label"  >ID réclamation </label>
 												<div class="col-md-9">
-													<input type="text" class="form-control" name="idr"  value="<?PHP echo $idr ?>" onblur="verifref(this);">
+													<input type="text" class="form-control" name="idr" onblur="verifref(this);">
 												</div>
 											</div>
 											<div class="form-group row">
 												<label class="col-md-3 col-form-label"  >Nom du client </label>
 												<div class="col-md-9">
-													<input type="text" class="form-control" name="nom"  value="<?PHP echo $nom ?>" onblur="verifnom(this);">
+													<input type="text" class="form-control" name="nom" onblur="verifnom(this);">
 												</div>
 											</div>
 											
 											<div class="form-group row mb-0">
 												<label class="col-md-3 col-form-label">Prenom du client</label>
 												<div class="col-md-9">
-														<input type="text" class="form-control" name="prenom" value="<?PHP echo $prenom ?>" onblur="verifnom(this);">
+														<input type="text" class="form-control" name="prenom" onblur="verifnom(this);">
 												</div>
 											</div>
 											</br>
@@ -400,56 +433,43 @@ if (isset($_GET['idr'])){
 											<div class="form-group row mb-0">
 												<label class="col-md-3 col-form-label">Numero telephone</label>
 												<div class="col-md-9">
-														<input type="text" class="form-control" name="tel" value="<?PHP echo $tel ?>" onblur="verifnom(this);">
+														<input type="text" class="form-control" name="tel" onblur="verifnom(this);">
 												</div>
 											</div>
 											</br>
 											<div class="form-group row mb-0">
 												<label class="col-md-3 col-form-label">Mail</label>
 												<div class="col-md-9">
-														<input type="text" class="form-control" name="mail" value="<?PHP echo $mail ?>" onblur="verifnom(this);">
+														<input type="text" class="form-control" name="mail" onblur="verifnom(this);">
 												</div>
 											</div>
 											</br>
 										<div class="form-group row mb-0">
 												<label class="col-md-3 col-form-label">Adresse</label>
 												<div class="col-md-9">
-														<input type="text" class="form-control" name="adresse" value="<?PHP echo $adresse ?>" onblur="verifnom(this);">
+														<input type="text" class="form-control" name="adresse" onblur="verifnom(this);">
 												</div>
 											</div>
 										</br>
 										<div class="form-group row mb-0">
 												<label class="col-md-3 col-form-label">Description</label>
 												<div class="col-md-9">
-												<input type="text" class="form-control" value="<?PHP echo $description ?>" name="description" onblur="verifnom(this);"></br>
-
+														<input type="text" class="form-control" name="description" onblur="verifnom(this);">
 												</div>
 											</div>
+										</br>
 											
-													<input type="submit" class="btn btn-primary mt-1 mb-0" name="modifier" value="Modifier">
-                                                    <input type="hidden" name="idr_ini" value="<?PHP echo $_GET['idr'];?>" >
-                                        </form> 
-                                        <?PHP
-	}
-}
-if (isset($_POST['modifier'])){
-	$reclamation=new reclamation($_POST['nom'],$_POST['prenom'],$_POST['tel'],$_POST['adresse'],$_POST['mail'],$_POST['description']);
-	$reclamationC->modifierReclamation($reclamation,$_POST['idr_ini']);
-	echo $_POST['idr_ini'];
-		//header('Location: afficherReclamation.php');
-		echo "<META http-equiv='refresh' content='0;URL=interface.php'>";
+													<button type="submit" class="btn btn-primary mt-1 mb-0">Ajouter</button>
 
-}
-?>
 
 									</div>
-							</div>
+								</div>
 								
 								
 						
-
+!-->
 		
-						                        <!--Tableauuuuu coupooonnnnn-->
+						                        <!--Tableauuuuu clients-->
 
 						<div class="col-12">
 								<div class="card">
@@ -503,7 +523,23 @@ if (isset($_POST['modifier'])){
 												</tr>
 												<?php
 											}?>
-											</tbody>
+											
+						<form method="POST" action="triClientid.php">
+<input type="submit" name="tri" value="Trier par identifiant" style="  background-color: #555555;border: none;color: white;padding: 15px 32px;text-align: center; font-size: 16px;margin: 4px 2px;border-radius: 12px;
+cursor: pointer;" >
+</form>
+							<form method="POST" action="triClientndc.php">
+<input type="submit" name="tri2" value="Trier par nom de compte" style="  background-color: #555555;border: none;color: white;padding: 15px 32px;text-align: center; font-size: 16px;margin: 4px 2px;border-radius: 12px;
+cursor: pointer;" >
+</form>
+							
+							<form method="post" action="rechercheClient2.php">
+			<input type="text" name="q" placeholder="ID" style="  padding: 6px; ;border: outset;font-size: 17px;  margin-top: 8px;margin-right: 16px;">
+ 
+			<input type="submit" name="submit" value="recherche" style=" background-color: #2F4F4F;border: none;color: white;padding: 15px 32px;text-align: center; font-size: 16px;margin: 4px 2px;border-radius: 12px;
+cursor: pointer;">
+</form>
+			  								</tbody>
 										
 
 									</table>
@@ -512,6 +548,7 @@ if (isset($_POST['modifier'])){
 								</div>
 							</div>
 
+<					<div id="chartContainer" style="height: 370px; width: 100%;"><div class="canvasjs-chart-container" style="position: relative; text-align: left; cursor: auto;"><canvas class="canvasjs-chart-canvas" width="1300" height="416" style="width: 1156px; height: 370px; position: absolute; user-select: none;"></canvas><canvas class="canvasjs-chart-canvas" width="1300" height="416" style="width: 1156px; height: 370px; position: absolute; -webkit-tap-highlight-color: transparent; user-select: none; cursor: default;"></canvas><div class="canvasjs-chart-toolbar" style="position: absolute; right: 1px; top: 1px; border: 1px solid transparent;"></div><div class="canvasjs-chart-tooltip" style="position: absolute; height: auto; box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 2px 2px; z-index: 1000; pointer-events: none; display: block; border-radius: 0px; left: 458px; bottom: -301px; transition: left 0.1s ease-out 0s, bottom 0.1s ease-out 0s;"><div style="width: auto; height: auto; min-width: 50px; margin: 0px; padding: 5px; font-family: &quot;Trebuchet MS&quot;, Helvetica, sans-serif; font-weight: normal; font-style: normal; font-size: 14px; color: black; text-shadow: rgba(0, 0, 0, 0.1) 1px 1px 1px; text-align: left; border: 1px solid rgb(192, 80, 78); background: rgba(255, 255, 255, 0.9); text-indent: 0px; white-space: nowrap; border-radius: 0px; user-select: none;"><span style="color:#C0504E;">0.1:</span>&nbsp;&nbsp;3</div></div><a class="canvasjs-chart-credit" title="JavaScript Charts" style="outline:none;margin:0px;position:absolute;right:2px;top:356px;color:dimgrey;text-decoration:none;font-size:11px;font-family: Calibri, Lucida Grande, Lucida Sans Unicode, Arial, sans-serif" tabindex="-1" target="_blank" href="https://canvasjs.com/">CanvasJS.com</a></div></div>
 
 
 						                        <!--Tableauuuuu des transactionnnnns-->
@@ -556,7 +593,7 @@ if (isset($_POST['modifier'])){
 																
 																<td><form method="POST" action="supprimerReclamation.php">
 														<span ><input  type="submit" class="btn btn-danger btn-rounded btn-sm my-0" name="Supprimer" value="Supprimer">
-															<input type="hidden" value="<?php echo $row['idr']; ?>" name="idr_ini"></span>
+															<input type="hidden" value="<?php echo $row['idr']; ?>" name="ids"></span>
 														
 													</form>
 													</td>
@@ -677,7 +714,7 @@ if (isset($_POST['modifier'])){
 		<!--app closed-->
 						<!-- Popup opened -->
 
-                
+            
 				<!-- Popup closed -->
 
 				<!-- MODIFIEEEEEEEEEEEEEEEEEEEEEEEEER weheeeeed-->
@@ -739,7 +776,7 @@ if (isset($_POST['modifier'])){
 		<script src="assets/plugins/Datatable/js/buttons.html5.min.js"></script>
 		<script src="assets/plugins/Datatable/js/buttons.print.min.js"></script>
 		<script src="assets/plugins/Datatable/js/buttons.colVis.min.js"></script>
-
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 
 	 </body>

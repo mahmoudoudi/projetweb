@@ -108,7 +108,7 @@
 							</li>
 
 							<li>
-								<a href="contact.html">Interface client</a>
+								<a href="contact.html">Inscription</a>
 							</li>
 						</ul>
 					</nav>
@@ -382,8 +382,8 @@
 
 	<!-- Title Page -->
 	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url(images/pains.jpg);">
-		<h2 style="color:indigo", class="l-text2 t-center">
-		INTERFACE CLIENT 
+		<h2 style="color:FireBrick", class="l-text2 t-center">
+		Inscription
 		</h2>
 	</section>
 
@@ -398,10 +398,11 @@
 				</div>
 
 				<div class="col-md-6 p-b-30">
-					<form class="leave-comment"  method="POST" action="ajoutReclamation.php">
-						<h4 style="color:MediumVioletRed ;", class="m-text26 p-b-36 p-t-15">
+					<form class="leave-comment"  method="POST" action="ajoutclientClient.php">
+
+						<h4 style="color:FireBrick ;", class="m-text26 p-b-36 p-t-15">
 							<div id="env">
-							Envoyer une reclamation
+							Inscrivez-vous
 							
 							</div>
 						</h4>
@@ -411,22 +412,48 @@
 						</div> -->
 
 						<div class="bo4 of-hidden size15 m-b-20">
-							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" id="nom" name="nom" placeholder="Nom ">
+							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" id="ndc" name="ndc" placeholder="nom de compte "   onblur="verifref(this);">
+
 
 						</div>
 						
 						<div class="bo4 of-hidden size15 m-b-20">
-							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" id="prenom" name="prenom" placeholder="Prenom">
+							<input class="sizefull s-text7 p-l-22 p-r-22" type="password" id="mdp" name="mdp" placeholder="mot de passe "   onblur="verifref(this);">
 
 						</div>
-
+						
 						<div class="bo4 of-hidden size15 m-b-20">
-							<input class="sizefull s-text7 p-l-22 p-r-22" type="number" id="tel" name="tel" placeholder="Numero de telephone">
-						</div>
-						<div class="bo4 of-hidden size15 m-b-20">
-							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" id="adresse" name="adresse" placeholder="Adresse ">
-						</div>
+							<input class="sizefull s-text7 p-l-22 p-r-22" type="password" id="cmdp" name="cmdp" placeholder="confirmer mot de passe "   onblur="verifref(this);">
 
+						</div>
+						
+
+
+					<!--	<div class="bo4 of-hidden size15 m-b-20">
+							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" id="idc" name="idc" placeholder="id compte "   onblur="verifref(this);">
+						</div>
+						!-->
+						
+						<div class="bo4 of-hidden size15 m-b-20">
+						<select class="form-control" name="categoriec" >
+													
+														<option>ordinaire</option>
+																												<option>régulier</option>
+
+													</select>
+</div>
+						
+						
+	<!--
+						<div class="bo4 of-hidden size15 m-b-20">
+							<input class="sizefull s-text7 p-l-22 p-r-22" type="text" id="categoriec" name="categoriec" placeholder="categoriec"   onblur="verifref(this);">
+						
+						!-->
+				
+						
+						
+						
+<!--
 						<div class="bo4 of-hidden size15 m-b-20">
 							<input class="sizefull s-text7 p-l-22 p-r-22" type="mail" id="mail" name="mail" placeholder="Adresse mail">
 						</div>
@@ -436,9 +463,10 @@
 						<textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" id="description" name="description" placeholder="Votre reclamation"></textarea>
 
 						<div class="w-size25">
+						-->
 							<!-- Button -->
-							<button type="submit" class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4" onclick = "controle()">
-							 Envoyer reclamation
+							<button type="submit" class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4" onclick = "controlemdp()">
+							Inscription
 							</button>
 							
 						</div>

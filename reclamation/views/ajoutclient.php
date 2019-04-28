@@ -10,9 +10,9 @@ $clientC->ajouterClient($client);
 //header('Location: afficherReclamation.php');
 
 
-  echo "<META http-equiv='refresh' content='0;URL=panierBE.php'>";
+  echo "<META http-equiv='refresh' content='0;URL=interface.php'>";
 
 }
 else
 echo "veuillez remplir tous les champs";
-?>
+?>l

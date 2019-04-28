@@ -36,3 +36,67 @@ else
 
 }
 
+
+function controle2()
+{
+
+document.getElementById("form").addEventListener("submit", function(e)
+{
+
+   var erreur; 
+   var idc = document.getElementById("idc"); 
+   var ndc = document.getElementById("ndc"); 
+   var mdp = document.getElementById("mdp");
+   var categorie =document.getElementById("categoriec");
+  
+
+   if (!idc.value)
+   {
+      erreur="Veuillez renseigner l'id du client"
+   }
+
+   if (!ndc.value)
+   {
+      erreur="Veuillez renseigner le nom de compte"
+   }
+
+   if (!mdp.value)
+   {
+      erreur="Veuillez renseigner le mot de passe"
+   }
+   if(!categorie.value)
+   {
+   erreur="Veuillez renseigner la categorie du client"
+   }
+  
+   
+   if (erreur)
+   {
+      e.preventDefault(); 
+    
+      alert('erreur');
+      return false; 
+   }
+    else
+    {
+         alert('Ajout de client effectué');
+    }
+
+
+});
+
+
+
+function controlemdp()
+{
+		var mdp1=document.getElementById("mdp").value;
+            	var mdp2=document.getElementById("cmdp").value;
+					
+					
+					if (mdp1 == mdp2 )
+					alert("Inscription réussie");
+					else
+					alert ("Les mots de passe sont différents !");
+	
+}
+}

@@ -4,7 +4,7 @@ $client=new clientC();
 
 if (isset($_POST["idC"])){
     $client->supprimerclient($_POST["idC"]);
-header('Location: panierBE.php');
+header('Location: interface.php');
 }
 
 ?>

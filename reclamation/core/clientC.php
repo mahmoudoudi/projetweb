@@ -52,6 +52,36 @@ class clientC
 		}
 	}
 
+		function afficherclienttrie()
+	{
+		$sql="select * from clients order by idc";
+		$db=config1::getConnexion();
+		try
+		{
+			$liste=$db->query($sql);
+			return $liste;
+		}
+		catch(Exception $e)
+		{
+			echo 'Erreur' .$e->getMessage();
+		}
+	}
+	
+	function afficherclienttriendc()
+	{
+		$sql="select * from clients order by ndc";
+		$db=config1::getConnexion();
+		try
+		{
+			$liste=$db->query($sql);
+			return $liste;
+		}
+		catch(Exception $e)
+		{
+			echo 'Erreur' .$e->getMessage();
+		}
+	}
+
 	function supprimerclient($idc)
 	{
 
@@ -133,6 +163,20 @@ try{
         catch (Exception $e){
             die('Erreur: '.$e->getMessage());
            
+        }
+	}
+	
+	
+	function rechercherListeClients($idc)
+	{
+		$sql="SELECT * from clients where idc like '%$idc%' or ndc like '%$idc%' or categoriec like '%$idc%' "; // recherche selon tarif donné
+		$db = config1::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
         }
 	}
 	

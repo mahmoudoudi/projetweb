@@ -13,7 +13,7 @@ var_dump($employe1);
 $reclamation1C=new reclamationC();
 $reclamation1C->ajouterReclamation($reclamation1);
 //header('Location: afficherReclamation.php');
-  echo "<META http-equiv='refresh' content='0;URL=afficherReclamation.php'>";
+ // echo "<META http-equiv='refresh' content='0;URL=afficherReclamation.php'>";
 	
 }
 //*/

@@ -530,7 +530,7 @@
 							<!-- Block2 -->
 							
 							<div class="block2">
-								<div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+								<div class="block2-img wrap-pic-w of-hidden pos-relative ">
 									<img src="Frontend/images/<?php echo $row['url']; ?>" alt="IMG-PRODUCT">  <!--image-->
                                      <!--Ajout au panier-->
 									<div class="block2-overlay trans-0-4">
@@ -550,7 +550,7 @@
 								</div>
                                   <!--form  method="POST" action="afficherProduit.php"-->
 								<div class="block2-txt p-t-20">
-									<a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5"> <?php echo $row['nom']; ?> </a>
+									<a class="block2-name dis-block s-text3 p-b-5"> <?php echo $row['nom']; ?> </a>
 									
 
 									<span class="block2-price m-text6 p-r-5"> <?php echo $row['prix']; ?> <a> dt</a></a>

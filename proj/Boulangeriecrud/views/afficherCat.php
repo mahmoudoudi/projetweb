@@ -1,4 +1,5 @@
 <?PHP   
+         require_once('session-verif.php');
         // categories
         include "../core/categorieC.php";
 		include "../entities/categorie.php";
@@ -76,22 +77,17 @@
 						</li>
 						<li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg d-flex">
 								<span class="mr-3 mt-2 d-none d-lg-block ">
-									<span class="text-white">Bonjour,<span class="ml-1"> Sarah Gmiha</span></span>
+									<span class="text-white">Bonjour,<span class="ml-1"><?php echo $login ?></span></span>
 								</span>
 							<span><img src="../assets/img/avatar/soussou.jpg" alt="profile-user" class="rounded-circle w-32 mr-2"></span>
 							</a>
 							<div class="dropdown-menu dropdown-menu-right">
 								<div class=" dropdown-header noti-title text-center border-bottom pb-3">
-									<h5 class="text-capitalize text-dark mb-1">Sarah Gmiha</h5>
+									<h5 class="text-capitalize text-dark mb-1"><?php echo $login ?></h5>
 									<small class="text-overflow m-0"> Gestion des produits</small>
 								</div>
-								<a class="dropdown-item" href="profile.html"><i class="mdi mdi-account-outline mr-2"></i> <span>My profile</span></a>
-								<a class="dropdown-item" href="#"><i class="mdi mdi-settings mr-2"></i> <span>Settings</span></a>
-								<a class="dropdown-item" href="#"><i class=" mdi mdi-message-outline mr-2"></i> <span>Mails</span></a>
-								<a class="dropdown-item" href="#"><i class=" mdi mdi-account-multiple-outline mr-2"></i> <span>Friends</span></a>
-								<a class="dropdown-item" href="#"><i class="fe fe-calendar mr-2"></i> <span>Activity</span></a>
-								<a class="dropdown-item" href="#"><i class="mdi mdi-compass-outline mr-2"></i> <span>Support</span></a>
-								<div class="dropdown-divider"></div><a class="dropdown-item" href="login.html"><i class="mdi  mdi-logout-variant mr-2"></i> <span>Logout</span></a>
+								<a class="dropdown-item" href="boulangerie.php"><i class="mdi mdi-compass-outline mr-2"></i> <span>Produits(FO)</span></a>
+								<div class="dropdown-divider"></div><a class="dropdown-item" href="session-logout.php"><i class="mdi  mdi-logout-variant mr-2"></i> <span>Logout</span></a>
 							</div>
 						</li>
 					</ul>
@@ -107,7 +103,7 @@
 								<span class="pulse bg-success" aria-hidden="true"></span>
 							</div>
 							<div class="user-info">
-								<h6 class=" mb-1 text-dark">Sarah Gmiha</h6>
+								<h6 class=" mb-1 text-dark"><?php echo $login ?> </h6>
 								<span class="text-muted app-sidebar__user-name text-sm">Gestion des produits</span>
 							</div>
 						</div>
@@ -115,14 +111,10 @@
 					<ul class="side-menu">
 						<li class="slide">
 							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-folder-open-o"></i><span class="side-menu__label">Dashboard</span><i class="angle fa fa-angle-right"></i></a>
-							<ul class="slide-menu">
-								<li><a class="slide-item" href="index-2.html"><span>what?</span></a></li>
-								<li><a class="slide-item" href="index2.html"><span>DDD -D</span></a></li>
-								
-							</ul>
+							
 						</li>
 						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-underline"></i><span class="side-menu__label">Produits</span><i class="angle fa fa-angle-right"></i></a>
+							<a class="side-menu__item active" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-underline"></i><span class="side-menu__label">Gestion des Produits</span><i class="angle fa fa-angle-right"></i></a>
 							<ul class="slide-menu">
 								<li><a href="formulaire.php" class="slide-item">Formulaire D'Ajout</a></li>
 								<li><a href="taboulangerie.php" class="slide-item"> Table Produits</a></li>
@@ -131,15 +123,14 @@
 								<li><a href="editable.php" class="slide-item"> Transactions sur les Tables</a></li>
 								<li><a href="statboulangerie.php" class="slide-item"> Statistiques</a></li>
 								
-							
 
 							</ul>
 						</li>
 						<li>
 							<a class="side-menu__item" href="emptypage.html"><i class="side-menu__icon fa fa-laptop"></i><span class="side-menu__label">Gestion Profiles</span></a>
 						</li>
-						<li class="active">
-							<a class="side-menu__item active" href="panierBE.php"><i class="side-menu__icon fe fe-shopping-cart"></i><span class="side-menu__label">Gestion promotion </span></a>
+						<li>
+							<a class="side-menu__item " href="panierBE.php"><i class="side-menu__icon fe fe-shopping-cart"></i><span class="side-menu__label">Gestion promotion </span></a>
 						</li>
 						<li>
 							<a class="side-menu__item" href="emptypage.html"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">SAV</span></a>
@@ -165,10 +156,7 @@
 					    <!--page-header open-->
 						<div class="page-header">
 							<h4 class="page-title"> Tables</h4>
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#" class="text-light-color">Table</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Basic Tables</li>
-							</ol>
+							
 						</div>
 						<!--page-header closed-->
 

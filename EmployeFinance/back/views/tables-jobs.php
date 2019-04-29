@@ -1,14 +1,27 @@
+<?PHP
+session_start();
+require("auth.php");
+ if(!auth::isLogged()) {
+ 	header('location:login.php');
+ }
+include "../core/jobsJ.php";
+$jobsJ1=new jobsJ();
+$listejobs=$jobsJ1->afficherjobss();
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 	
-<!-- Mirrored from www.spruko.com/demo/splite/formelements.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Feb 2019 18:34:42 GMT -->
+<!-- Mirrored from www.spruko.com/demo/splite/table.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Feb 2019 18:34:37 GMT -->
 <head>
 
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Gestion finance</title>
+		<title>Liste des jobs</title>
 
-		<!--Favicon -->
+		<!--favicon -->
 		<link rel="icon" href="favicon.html" type="image/x-icon"/>
 
 		<!--Bootstrap.min css-->
@@ -17,30 +30,29 @@
 		<!--Icons css-->
 		<link rel="stylesheet" href="assets/css/icons.css">
 
-		<!--Style css-->
-		<link rel="stylesheet" href="assets/css/style.css">
-
 		<!--mCustomScrollbar css-->
 		<link rel="stylesheet" href="assets/plugins/scroll-bar/jquery.mCustomScrollbar.css">
 
+		<!--Style css-->
+		<link rel="stylesheet" href="assets/css/style.css">
+
 		<!--Sidemenu css-->
 		<link rel="stylesheet" href="assets/plugins/toggle-menu/sidemenu.css">
-
-		<!--Morris css-->
-		<link rel="stylesheet" href="assets/plugins/morris/morris.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
 
 	</head>
 
-	<body class="app ">
+	<body class="app">
 	<div class="wave -three"></div>
 
 		<div id="spinner"></div>
 
-		<!--app open-->
+		<!-- app open -->
 		<div id="app" class="page">
-			<div class="main-wrapper" >
+			<div class="main-wrapper">
 
-			    <!--anv open-->
+			    <!--nav open-->
 				<nav class="navbar navbar-expand-lg main-navbar">
 					<a class="header-brand" href="index-2.html">
 						<img src="assets/img/brand/logo-white.png" class="header-brand-img" alt="Splite-Admin  logo">
@@ -230,15 +242,15 @@
 								<a class="dropdown-item" href="#"><i class=" mdi mdi-account-multiple-outline mr-2"></i> <span>Friends</span></a>
 								<a class="dropdown-item" href="#"><i class="fe fe-calendar mr-2"></i> <span>Activity</span></a>
 								<a class="dropdown-item" href="#"><i class="mdi mdi-compass-outline mr-2"></i> <span>Support</span></a>
-								<div class="dropdown-divider"></div><a class="dropdown-item" href="login.html"><i class="mdi  mdi-logout-variant mr-2"></i> <span>Logout</span></a>
+								<div class="dropdown-divider"></div><a class="dropdown-item" href="logout.php"><i class="mdi  mdi-logout-variant mr-2"></i> <span>Logout</span></a>
 							</div>
 						</li>
 					</ul>
 				</nav>
 				<!--nav closed-->
 
-                <!--aside open-->
-				<aside class="app-sidebar">
+				<!--aside open-->
+			<aside class="app-sidebar">
 					<div class="app-sidebar__user">
 						<div class="dropdown user-pro-body text-center">
 							<div class="nav-link pl-1 pr-1 leading-none ">
@@ -254,26 +266,19 @@
 					<ul class="side-menu">
 						<li class="slide">
 							<a class="side-menu__item"  data-toggle="slide" href="#"><i class="side-menu__icon fa fa-laptop"></i><span class="side-menu__label">Dashboard</span><span class="badge badge-orange nav-badge">5</span></a>
-							<ul class="slide-menu">
-								<li><a class="slide-item"  href="index-2.html"><span>Sales Dashboard </span></a></li>
-								<li><a class="slide-item" href="index2.html"><span>Social Dashboard</span></a></li>
-								<li><a class="slide-item" href="index3.html"><span>Marketing Dashboard</span></a></li>
-								<li><a class="slide-item" href="index4.html"><span>IT Dashboard</span></a></li>
-								<li><a class="slide-item" href="index5.html"><span>Crypto Currency </span></a></li>
-							</ul>
-						</li>
-						<li class="slide">
+							
+								<li class="slide">
 								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">Employe</span><i class="angle fa fa-angle-right"></i></a>
 								<ul class="slide-menu">
 									<li><a href="ajout-employe.html" class="slide-item"> Ajouter</a></li>
-									<li><a href="tables-employe.php" class="slide-item"> Consulter</a>
+									<li><a href="tables-employe.php" class="slide-item"> consulter</a>
 								</ul>
 							</li>
-						<li class="slide">
-								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">finance</span><i class="angle fa fa-angle-right"></i></a>
+							<li class="slide">
+								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">Finance</span><i class="angle fa fa-angle-right"></i></a>
 								<ul class="slide-menu">
 									<li><a href="ajout-finance.html" class="slide-item"> Ajouter</a></li>
-									<li><a href="tables-finance.php" class="slide-item"> Consulter</a>
+									<li><a href="tables-finance.php" class="slide-item"> consulter</a>
 								</ul>
 							</li>
 							<li class="slide">
@@ -283,269 +288,130 @@
 									<li><a href="tables-jobs.php" class="slide-item"> consulter</a>
 								</ul>
 							</li>
-						<li>
-							<a class="side-menu__item" href="widgets.html"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Widgets</span></a>
 						</li>
-						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-envelope-o"></i><span class="side-menu__label">Mail</span><span class="badge badge-warning nav-badge">3</span></a>
-							<ul class="slide-menu">
-								<li><a href="mailinbox.html" class="slide-item"> Mail-inbox</a></li>
-								<li><a href="mail-compose.html" class="slide-item"> Mail-Compose</a></li>
-								<li><a href="viewmail.html" class="slide-item"> View-Email</a></li>
-							</ul>
-						</li>
-						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">Components</span><i class="angle fa fa-angle-right"></i></a>
-							<ul class="slide-menu">
-								<li><a href="cards.html" class="slide-item"> Cards</a></li>
-								<li><a href="dragablecards.html" class="slide-item"> Dragable Cards</a></li>
-								<li><a href="loaders.html" class="slide-item"> Loaders</a></li>
-								<li><a href="chat.html" class="slide-item"> Chat</a></li>
-								<li><a href="treeview.html" class="slide-item"> Tree View</a></li>
-								<li><a href="imgcrop.html" class="slide-item"> Image Crop</a></li>
-								<li><a href="order.html" class="slide-item"> Orders</a></li>
-								<li><a href="search.html" class="slide-item"> Search  Page</a></li>
-								<li><a href="chattypes.html" class="slide-item">Chat Types</a></li>
-								<li><a href="sortable%26nestable.html" class="slide-item">Sortable & Nestable</a></li>
-								<li><a href="counters.html" class="slide-item"> Counters</a></li>
-								<li><a href="rating.html" class="slide-item"> Ratings</a></li>
-								<li><a href="intro.html" class="slide-item"> Intro(tour)</a></li>
-								<li><a href="clipboard.html" class="slide-item"> Clipboard</a></li>
-								<li><a href="dropzone.html" class="slide-item"> Dropzone</a></li>
-							</ul>
-						</li>
-						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-underline"></i><span class="side-menu__label">UI Elements</span><i class="angle fa fa-angle-right"></i></a>
-							<ul class="slide-menu">
-								<li><a href="elements.html" class="slide-item"> Elements</a></li>
-								<li><a href="buttons.html" class="slide-item"> Buttons</a></li>
-								<li><a href="colors.html" class="slide-item"> Colors</a></li>
-								<li><a href="toastr.html" class="slide-item"> Toastr</a></li>
-								<li><a href="calender.html" class="slide-item"> Calendar</a></li>
-								<li><a href="rangesliders.html" class="slide-item"> Rangeslider</a></li>
-								<li><a href="modals.html" class="slide-item"> Modals</a></li>
-								<li><a href="timeline.html" class="slide-item"> Timeline</a></li>
-								<li><a href="invoice.html" class="slide-item"> Invoice</a></li>
-								<li><a href="users.html" class="slide-item"> Users List</a></li>
-								<li><a href="mediaobject.html" class="slide-item"> Media Objects</a></li>
-								<li><a href="grids.html" class="slide-item"> Grids</a></li>
-								<li><a href="panel.html" class="slide-item"> Panels</a></li>
-								<li><a href="tags.html" class="slide-item"> Tags</a></li>
-								<li><a href="scrollbar.html" class="slide-item"> Scrollbar</a></li>
-								<li><a href="headers.html" class="slide-item"> Headers</a></li>
-								<li><a href="footer.html" class="slide-item"> Footers</a></li>
-
-							</ul>
-						</li>
-						<li class="slide">
-						    <a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-smile-o"></i><span class="side-menu__label">Icons</span><i class="angle fa fa-angle-right"></i></a>
-							<ul class="slide-menu">
-								<li><a href="icons-fontawesome.html" class="slide-item"> Font Awesome</a></li>
-								<li><a href="icons-simpleline.html" class="slide-item"> Simple line</a></li>
-								<li><a href="icons-themify.html" class="slide-item"> Themify</a></li>
-								<li><a href="icons-flag.html" class="slide-item"> Flag Icons</a></li>
-								<li><a href="icons-feather.html" class="slide-item"> Feather Awesome</a></li>
-								<li><a href="icons-ion.html" class="slide-item"> Ion Icons</a></li>
-								<li><a href="icons-pe7.html" class="slide-item"> pe7</a></li>
-								<li><a href="icons-typicons.html" class="slide-item"> Typicons</a></li>
-								<li><a href="icons-materialdesign.html" class="slide-item"> Material Design</a></li>
-								<li><a href="icons-weather.html" class="slide-item"> Weather Icons</a></li>
-							</ul>
-						</li>
-						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-table"></i><span class="side-menu__label">Tables</span><span class="badge badge-secondary nav-badge1">New</span></a>
-							<ul class="slide-menu">
-								<li><a href="table.html" class="slide-item">Basic Tables</a></li>
-								<li><a href="datatables.html" class="slide-item"> Data Tables</a></li>
-								<li><a href="editable.html" class="slide-item"> Edit Table</a></li>
-							</ul>
-						</li>
-						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-edit"></i><span class="side-menu__label">Forms</span><span class="badge badge-pink nav-badge">6</span></a>
-							<ul class="slide-menu">
-								<li><a href="formelements.html" class="slide-item"> Form Elements</a></li>
-								<li><a href="formadvanced.html" class="slide-item"> Advanced Form</a></li>
-								<li><a href="formeditor.html" class="slide-item"> Form Editor</a></li>
-								<li><a href="formvalidaton.html" class="slide-item"> Form Validation</a></li>
-								<li><a href="formwizard.html" class="slide-item"> Form Wizard</a></li>
-								<li><a href="formelementsadvanced.html" class="slide-item">FormAdvanced Elements</a></li>
-							</ul>
-						</li>
-						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-line-chart"></i><span class="side-menu__label">Charts</span><i class="angle fa fa-angle-right"></i></a>
-							<ul class="slide-menu">
-								<li><a href="chartjs.html" class="slide-item">Chart Js</a></li>
-								<li><a href="flotcharts.html" class="slide-item"> Flot Charts</a></li>
-								<li><a href="barcharts.html" class="slide-item"> Bar Charts</a></li>
-								<li><a href="echart.html" class="slide-item"> ECharts</a></li>
-								<li><a href="chartist.html" class="slide-item"> Chartist</a></li>
-								<li><a href="morris.html" class="slide-item"> Morris Charts</a></li>
-								<li><a href="othercharts.html" class="slide-item"> Other Charts</a></li>
-								<li><a href="googlechart.html" class="slide-item"> Google Charts</a></li>
-								<li><a href="hightchart.html" class="slide-item"> HighCharts</a></li>
-								<li><a href="chartgage.html" class="slide-item"> JustGage Charts</a></li>
-							</ul>
-						</li>
-						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-map"></i><span class="side-menu__label">Maps</span><i class="angle fa fa-angle-right"></i></a>
-							<ul class="slide-menu">
-								<li><a href="maps.html" class="slide-item"> Google Maps</a></li>
-								<li><a href="vector-map.html" class="slide-item">Vector Maps</a></li>
-								<li><a href="mapel.html" class="slide-item">Mapel Maps</a></li>
-							</ul>
-						</li>
-						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-folder-open-o"></i><span class="side-menu__label">Pages</span><i class="angle fa fa-angle-right"></i></a>
-							<ul class="slide-menu">
-								<li><a href="profile.html" class="slide-item"> Profile</a></li>
-								<li><a href="editprofile.html" class="slide-item"> Edit Profile</a></li>
-								<li><a href="priidg-tables.html" class="slide-item"> Priidg Tables</a></li>
-								<li><a href="gallery.html" class="slide-item"> Gallery</a></li>
-								<li><a href="portfolio.html" class="slide-item"> Portfolio</a></li>
-								<li><a href="terms.html" class="slide-item"> Terms and Conditions</a></li>
-								<li><a href="faq.html" class="slide-item"> FAQs</a></li>
-								<li><a href="landingpage.html" class="slide-item"> Landing Page</a></li>
-								<li><a href="emptypage.html" class="slide-item"> Empty  Page</a></li>
-								<li><a href="blog.html" class="slide-item"> Blog</a></li>
-								<li><a href="blog-detail.html" class="slide-item"> Single Blog Post</a></li>
-							</ul>
-						</li>
-						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fe fe-shopping-cart"></i><span class="side-menu__label">E-Commerce</span><span class="badge badge-danger nav-badge">4</span></a>
-							<ul class="slide-menu">
-								<li><a href="shop.html" class="slide-item"> Shop</a></li>
-								<li><a href="product-details.html" class="slide-item">Product Details</a></li>
-								<li><a href="product.html" class="slide-item">Product Details-1</a></li>
-								<li><a href="shop-cart.html" class="slide-item"> Shop Cart</a></li>
-							</ul>
-						</li>
-						<li class="slide">
-							<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cube"></i><span class="side-menu__label">Custom Pages</span><i class="angle fa fa-angle-right"></i></a>
-							<ul class="slide-menu">
-								<li><a href="register.html" class="slide-item"> Register</a></li>
-								<li><a href="login.html" class="slide-item"> Login</a></li>
-								<li><a href="forgot.html" class="slide-item"> Forgot Password</a></li>
-								<li><a href="reset.html" class="slide-item"> Reset Password</a></li>
-								<li><a href="under-construction.html" class="slide-item"> Under Construction</a></li>
-								<li><a href="lockscreen.html" class="slide-item"> Lock Screen</a></li>
-								<li><a href="404.html" class="slide-item"> 404</a></li>
-								<li><a href="505.html" class="slide-item"> 505</a></li>
-							</ul>
-						</li>
-					</ul>
 				</aside>
 				<!--aside closed-->
 
-                <!--app-content open-->
-				 <form method="POST" action="ajoutfinance.php">
+				<!--app-content open-->
 				<div class="app-content">
 					<section class="section">
 
-                        <!--page-header open-->
+					    <!--page-header open-->
 						<div class="page-header">
-							<h4 class="page-title">Gestion finance</h4>
+							<h4 class="page-title">Gestion jobs</h4>
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#" class="text-light-color">Forms</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Form Elements</li>
+								<li class="breadcrumb-item"><a href="#" class="text-light-color">Table</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Basic Tables</li>
 							</ol>
 						</div>
 						<!--page-header closed-->
 
+						<div class="section-body">
 
+                            <!--row open-->
+							
+									<div class="card export-database">
+										<div class="card-header">
+											<h4>Gestion jobs</h4>
+										</div>
+										<div class="row">
+								<div class="col-md-12">
+									<div class="card export-database">
+										<div class="card-header">
+											<div class="float-right">
+												<form method="POST" action="trierJ.php">
+       	  <button type="submit">trier</button>
+       	   <select name="trie" type="submit">
+			<option value="1" selected="selected">Disponible</option>
+				<option value="0">Non Disponible</option>
+			
+					</select>
+       </form>
+												 <form method="get" action="recherche.php">
+       	  <input type="text" class="float-right" name="search" placeholder="Taper pour chercher…">
+       	   <input type="submit" class="float-right"  value="search">
+       </form>
+											</div>
 
-							<div class="col-lg-12 col-xl-6 col-md-12 col-sm-12">
-								<div class="card">
-									<div class="card-header">
-										<h4>finance</h4>
+										<div class="card-body">
+											<div class="table-responsive">
+												<div id="HTMLtoPDF">
+											<table id="example" class="table table-bordered table-responsive-md table-striped text-center mb-0 text-nowrap" >
+													<thead>
+												
+													<tr>
+														<th>ID</th>
+														<th>Poste</th>
+														<th>Salaire</th>
+														<th>Experience</th>
+														<th>Horaire</th>
+														<th>etat</th>
+																								
+													</tr>
+												</thead>
+													<?PHP
+                                 foreach($listejobs as $row){
+                                ?>
+                             
+                                <tr>
+                                    
+                                    <td><?PHP echo $row['id']; ?>  </td>
+                                    <td><?PHP echo $row['poste']; ?>  </td>
+                                    <td><?PHP echo $row['salaire']; ?></td>
+                                    <td><?PHP echo $row['experience']; ?>  </td>
+                                    <td><?PHP echo $row['horaire']; ?>  </td>
+                                    <td><?PHP echo $row['etat']; ?></td>
+                                    </td>
+
+                           	
+
+                                   <td><form method="POST" action="supprimerjobs.php">
+                                       
+                                        <a href="modifierjobs.php?edit=<?php echo $row['id']; ?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></a>
+                                        <input class="bin btn-primary waves-effect waves-light m-r-10" 
+                                        type="submit" name="trash" value="trash">
+                                        <input type="hidden" value="<?PHP echo $row['id']; ?>" name="id">
+                                 </form>
+                                    </td> 
+                                </tr>
+                              
+                                <?php
+                                }
+                                ?> 
+												</table>
+											</div>
+											
+											</div>
+										</div>
 									</div>
-									<div class="card-body">
-										<form class="form-horizontal" >
-											<!--<div class="form-group row">
-												<label class="col-md-3 col-form-label">id</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="id" >
-												</div>!-->
-											</div>
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">pain</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="pain" >
-												</div>
-											</div>
-																				
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">patisserie</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="patisserie" >
-												</div>
-											</div>										
-
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">viennoiserie</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="viennoiserie" >
-												</div>
-											</div>									
-
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">frais divers</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="divers" >
-												</div>
-											</div>										
-
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">matiére premiere</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="premiere" >
-												</div>
-											</div>										
-
-											<!--<div class="form-group row">
-												<label class="col-md-3 col-form-label">charges</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="charge" >
-												</div>
-											</div>
-												<div class="form-group row">
-												<label class="col-md-3 col-form-label">recettes</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="recette" >
-												</div>
-											</div>
-												<div class="form-group row">
-												<label class="col-md-3 col-form-label">RECETTE NET</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="net" >
-												</div>
-											</div>!-->
+								</div>
+							</div>
+						</div>
+					</tbody>
+				</tbody>
+			</thead>
+		</table>
+								<form method="POST" action="ajout-jobs.html">
+								       <div class="card-footer">
+                                   <td><br/><br/><br/><button type="submit" class="btn btn-primary btn-sm" >
+                                                 <i class="fa fa-dot-circle-o" ></i> Ajouter </button> </td>
+                                                     
+                                                </td>  
 										
 				
 											
 										</form>
-										<button type="submit" class="btn btn-primary mt-1 mb-0">Submit</button>
-									</div>
-								</div>
-							</div>
 
+							<!--row closed-->
 
-						</div>
-				 </form>
-			
-					</section>
-				</div>
-				<!--app-content closed-->
-
-				<footer class="main-footer">
-					<div class="text-center">
-					
-					</div>
-				</footer>
+                            <!--row open-->
+							
+											
 
 				<!-- Popupchat open-->
 				<div class="popup-box chat-popup" id="qnimate">
 					<div class="popup-head">
-						<div class="popup-head-left pull-left"><img src="assets/img/avatar/avatar-3.jpg" alt="iamgurdeeposahan" class="mr-2"> Youssef Ghedas</div>
+						<div class="popup-head-left pull-left"><img src="assets/img/avatar/avatar-3.jpg" alt="iamgurdeeposahan" class="mr-2"> Alica Nestle</div>
 						<div class="popup-head-right pull-right">
 							<div class="btn-group">
 								<button class="chat-header-button" data-toggle="dropdown" type="button" aria-expanded="false">
@@ -567,7 +433,7 @@
 							</div>
 							<div class="direct-chat-msg">
 								<div class="direct-chat-info clearfix">
-									<span class="direct-chat-name float-left">Youssef Ghedas</span>
+									<span class="direct-chat-name float-left">Alica Nestle</span>
 									<span class="direct-chat-timestamp float-right">7:40 Am</span>
 								</div>
 								<img class="direct-chat-img" src="assets/img/avatar/avatar-3.jpg" alt="message user image">
@@ -628,13 +494,19 @@
 
 		<!-- Back to top -->
 		<a href="#top" id="back-to-top" ><i class="fa fa-angle-up"></i></a>
+	
 
 		<!-- Popup-chat -->
 		<a href="#" id="addClass"><i class="ti-comment"></i></a>
 
 		<!--Jquery.min js-->
-		<script type="text/javascript" src="js/form.js"></script>
+	<script src="js/jspdf.js"></script>
+	<script src="js/jquery-2.1.3.js"></script>
+	<script src="js/pdfFromHTML.js"></script>
+
 		<script src="assets/js/jquery.min.js"></script>
+
+
 
 		<!--popper js-->
 		<script src="assets/js/popper.js"></script>
@@ -660,12 +532,21 @@
 		<!--Sidemenu js-->
 		<script src="assets/plugins/toggle-menu/sidemenu.js"></script>
 
+
+
 		<!--Scripts js-->
 		<script src="assets/js/scripts.js"></script>
-		<script src="js/form.js"></script>
 		<script src="assets/js/jquery.showmore.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+	</body>
 
-	 </body>
-
-<!-- Mirrored from www.spruko.com/demo/splite/formelements.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Feb 2019 18:34:42 GMT -->
+<!-- Mirrored from www.spruko.com/demo/splite/table.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Feb 2019 18:34:37 GMT -->
 </html>

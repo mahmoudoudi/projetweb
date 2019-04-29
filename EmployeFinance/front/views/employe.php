@@ -7,7 +7,7 @@ $listeemploye=$employeP1->afficheremployes();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>About</title>
+	<title>Nos Employes</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -73,7 +73,7 @@ $listeemploye=$employeP1->afficheremployes();
 			<div class="wrap_header">
 				<!-- Logo -->
 				<a href="index.html" class="logo">
-					<img src="images/icons/logo.png" alt="IMG-LOGO">
+					<img src="images/icons/banette.png" alt="IMG-LOGO">
 				</a>
 
 				<!-- Menu -->
@@ -93,7 +93,7 @@ $listeemploye=$employeP1->afficheremployes();
 								<a href="product.html">Shop</a>
 							</li>
 
-							<li class="sale-noti">
+							<li >
 								<a href="product.html">Sale</a>
 							</li>
 
@@ -112,7 +112,7 @@ $listeemploye=$employeP1->afficheremployes();
 							<li>
 								<a href="contact.html">Contact</a>
 							</li>
-								<li>
+								<li class="sale-noti">
 								<a href="employe.php">Nos Employés</a>
 							</li>
 						</ul>
@@ -400,14 +400,12 @@ $listeemploye=$employeP1->afficheremployes();
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title"> employe </strong>
+                                <strong class="card-title"> Nos Employés </strong>
                             </div>
                             <div class="card-body">
                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                     <thead>
-                                        <tr>
-                                            <th> Nos Employés</th>
-                                        </tr>
+                                      
                                         <?PHP
                                  foreach($listeemploye as $row){
                                 ?>
@@ -428,9 +426,6 @@ $listeemploye=$employeP1->afficheremployes();
                             </div>
                         </div>
                     </div>
-						<span class="s-text7">
-							- Steve Job’s
-						</span>
 					</div>
 				</div>
 			</div>

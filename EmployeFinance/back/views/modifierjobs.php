@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-	
-<!-- Mirrored from www.spruko.com/demo/splite/formelements.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Feb 2019 18:34:42 GMT -->
+	<?php
+include "../config.php";
+$db=config::getConnexion();
+$id = $_GET['edit'];
+$emps=$db->query("SELECT * FROM  jobs WHERE id=$id");
+           while ($row = $emps->fetch()) {
+            $id= $row['id'];
+            $poste = $row['poste'];
+            $salaire = $row['salaire'];
+ 			$experience=$row['experience'];
+ 			
+ 			$horaire=$row['horaire'];
+ 			$etat=$row['etat'];
+
+
+
+        }
+?>
+
 <head>
 
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Gestion finance</title>
+		<title>Gestion Commande</title>
 
 		<!--Favicon -->
 		<link rel="icon" href="favicon.html" type="image/x-icon"/>
@@ -263,26 +280,13 @@
 							</ul>
 						</li>
 						<li class="slide">
-								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">Employe</span><i class="angle fa fa-angle-right"></i></a>
-								<ul class="slide-menu">
-									<li><a href="ajout-employe.html" class="slide-item"> Ajouter</a></li>
-									<li><a href="tables-employe.php" class="slide-item"> Consulter</a>
-								</ul>
-							</li>
-						<li class="slide">
-								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">finance</span><i class="angle fa fa-angle-right"></i></a>
-								<ul class="slide-menu">
-									<li><a href="ajout-finance.html" class="slide-item"> Ajouter</a></li>
-									<li><a href="tables-finance.php" class="slide-item"> Consulter</a>
-								</ul>
-							</li>
-							<li class="slide">
-								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">Jobs</span><i class="angle fa fa-angle-right"></i></a>
+								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">jobs</span><i class="angle fa fa-angle-right"></i></a>
 								<ul class="slide-menu">
 									<li><a href="ajout-jobs.html" class="slide-item"> Ajouter</a></li>
 									<li><a href="tables-jobs.php" class="slide-item"> consulter</a>
 								</ul>
 							</li>
+						</li>
 						<li>
 							<a class="side-menu__item" href="widgets.html"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Widgets</span></a>
 						</li>
@@ -437,18 +441,13 @@
 				<!--aside closed-->
 
                 <!--app-content open-->
-				 <form method="POST" action="ajoutfinance.php">
+				 <form method="POST" action="editjob.php">
 				<div class="app-content">
 					<section class="section">
 
                         <!--page-header open-->
 						<div class="page-header">
-							<h4 class="page-title">Gestion finance</h4>
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#" class="text-light-color">Forms</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Form Elements</li>
-							</ol>
-						</div>
+							<h4 class="page-title">Gestion Jobs</h4> </div>
 						<!--page-header closed-->
 
 
@@ -456,74 +455,53 @@
 							<div class="col-lg-12 col-xl-6 col-md-12 col-sm-12">
 								<div class="card">
 									<div class="card-header">
-										<h4>finance</h4>
+										<h4>Modifier jobs</h4>
 									</div>
 									<div class="card-body">
 										<form class="form-horizontal" >
-											<!--<div class="form-group row">
-												<label class="col-md-3 col-form-label">id</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="id" >
-												</div>!-->
-											</div>
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">pain</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="pain" >
-												</div>
-											</div>
-																				
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">patisserie</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="patisserie" >
-												</div>
-											</div>										
+											<div class="form-group row"">
+                                                                <label for="password-input" class="col-md-3 col-form-label">id </label>
+                                                             <div class="col-md-9"><input type="text" id="id" name="id" value="<?php echo $id;?>" class="form-control"><small class="help-block form-text" required></small></div><br/>
 
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">viennoiserie</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="viennoiserie" >
-												</div>
-											</div>									
+                                                            <div class="form-group row"">
+                                                                <label for="password-input" class="col-md-3 col-form-label">poste </label>
+                                                                <div class="col-md-9"><input type="text" id="poste" name="poste" value="<?php echo $poste;?>" class="form-control"><small class="help-block form-text" required></small></div><br/>
 
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">frais divers</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="divers" >
-												</div>
-											</div>										
+                                                            <div class="form-group row"">
+                                                                <label for="password-input" class="col-md-3 col-form-label">salaire </label>
+                                                                <div class="col-md-9"><input type="text" id="salaire" name="salaire" value="<?php echo $salaire;?>" class="form-control"><small class="help-block form-text" required></small></div><br/>
+                                                            </div><br/>
+                                                             <div class="form-group row"">
+                                                                <label for="password-input" class="col-md-3 col-form-label">experience</label>
+                                                                <div class="col-md-9"><input type="text" id="experience" name="experience" value="<?php echo $experience;?>" class="form-control"><small class="help-block form-text" required></small></div><br/>
+                                                            </div><br/>
+                                                            <br/>
+                                                               <div class="form-group row"">
+                                                                <label for="password-input" class="col-md-3 col-form-label">horaire</label>
+                                                                <div class="col-md-9"><input type="text" id="horaire" name="horaire" value="<?php echo $horaire;?>" class="form-control"><small class="help-block form-text" required></small></div><br/>
+                                                            </div><br/>
+                                                              <div class="form-group row" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 36px, 0px); top: 265px; left: 183px; will-change: transform;">
+												
+												<select name="etat" class="dropdown-menu show">
+				<option value="1" selected="selected">disponible</option>
+				<option value="0">non disponible</option>
+			
+					</select>		
 
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">matiére premiere</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="premiere" >
-												</div>
-											</div>										
-
-											<!--<div class="form-group row">
-												<label class="col-md-3 col-form-label">charges</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="charge" >
-												</div>
-											</div>
-												<div class="form-group row">
-												<label class="col-md-3 col-form-label">recettes</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="recette" >
-												</div>
-											</div>
-												<div class="form-group row">
-												<label class="col-md-3 col-form-label">RECETTE NET</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="net" >
-												</div>
-											</div>!-->
+											</div>		
+                                                          
+                            <input type="hidden" name="id"  value="<?php echo $id;?>" >
+              <div class="card-footer">
+                                   <td><br/><br/><br/><button type="submit" class="btn btn-primary btn-sm" >
+                                                 <i class="fa fa-dot-circle-o" ></i> Enregistrer
+                            </button> </td>
+                                                     
+                                                </td>  
 										
 				
 											
 										</form>
-										<button type="submit" class="btn btn-primary mt-1 mb-0">Submit</button>
+									
 									</div>
 								</div>
 							</div>

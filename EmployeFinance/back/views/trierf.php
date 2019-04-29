@@ -1,14 +1,29 @@
+
+<?PHP
+include "../core/employeE.php";
+
+$employeE1=new employeE();
+if($_POST['trie']=='1') {
+	$listeemploye=$employeE1->trier();
+}
+else {
+	$listeemploye=$employeE1->trier1();
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 	
-<!-- Mirrored from www.spruko.com/demo/splite/formelements.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Feb 2019 18:34:42 GMT -->
+<!-- Mirrored from www.spruko.com/demo/splite/table.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Feb 2019 18:34:37 GMT -->
 <head>
 
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Gestion finance</title>
+		<title>Liste des employe</title>
 
-		<!--Favicon -->
+		<!--favicon -->
 		<link rel="icon" href="favicon.html" type="image/x-icon"/>
 
 		<!--Bootstrap.min css-->
@@ -17,30 +32,28 @@
 		<!--Icons css-->
 		<link rel="stylesheet" href="assets/css/icons.css">
 
-		<!--Style css-->
-		<link rel="stylesheet" href="assets/css/style.css">
-
 		<!--mCustomScrollbar css-->
 		<link rel="stylesheet" href="assets/plugins/scroll-bar/jquery.mCustomScrollbar.css">
 
+		<!--Style css-->
+		<link rel="stylesheet" href="assets/css/style.css">
+
 		<!--Sidemenu css-->
 		<link rel="stylesheet" href="assets/plugins/toggle-menu/sidemenu.css">
-
-		<!--Morris css-->
-		<link rel="stylesheet" href="assets/plugins/morris/morris.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
 
 	</head>
 
-	<body class="app ">
+	<body class="app">
 	<div class="wave -three"></div>
 
-		<div id="spinner"></div>
 
-		<!--app open-->
+		<!-- app open -->
 		<div id="app" class="page">
-			<div class="main-wrapper" >
+			<div class="main-wrapper">
 
-			    <!--anv open-->
+			    <!--nav open-->
 				<nav class="navbar navbar-expand-lg main-navbar">
 					<a class="header-brand" href="index-2.html">
 						<img src="assets/img/brand/logo-white.png" class="header-brand-img" alt="Splite-Admin  logo">
@@ -237,7 +250,7 @@
 				</nav>
 				<!--nav closed-->
 
-                <!--aside open-->
+				<!--aside open-->
 				<aside class="app-sidebar">
 					<div class="app-sidebar__user">
 						<div class="dropdown user-pro-body text-center">
@@ -261,28 +274,21 @@
 								<li><a class="slide-item" href="index4.html"><span>IT Dashboard</span></a></li>
 								<li><a class="slide-item" href="index5.html"><span>Crypto Currency </span></a></li>
 							</ul>
-						</li>
-						<li class="slide">
+							<li class="slide">
 								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">Employe</span><i class="angle fa fa-angle-right"></i></a>
 								<ul class="slide-menu">
 									<li><a href="ajout-employe.html" class="slide-item"> Ajouter</a></li>
-									<li><a href="tables-employe.php" class="slide-item"> Consulter</a>
-								</ul>
-							</li>
-						<li class="slide">
-								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">finance</span><i class="angle fa fa-angle-right"></i></a>
-								<ul class="slide-menu">
-									<li><a href="ajout-finance.html" class="slide-item"> Ajouter</a></li>
-									<li><a href="tables-finance.php" class="slide-item"> Consulter</a>
+									<li><a href="tables-employe.php" class="slide-item"> consulter</a>
 								</ul>
 							</li>
 							<li class="slide">
-								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">Jobs</span><i class="angle fa fa-angle-right"></i></a>
+								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">finance</span><i class="angle fa fa-angle-right"></i></a>
 								<ul class="slide-menu">
-									<li><a href="ajout-jobs.html" class="slide-item"> Ajouter</a></li>
-									<li><a href="tables-jobs.php" class="slide-item"> consulter</a>
+									<li><a href="ajout-finance.html" class="slide-item"> Ajouter</a></li>
+									<li><a href="tables-finance.php" class="slide-item"> consulter</a>
 								</ul>
 							</li>
+						</li>
 						<li>
 							<a class="side-menu__item" href="widgets.html"><i class="side-menu__icon fe fe-grid"></i><span class="side-menu__label">Widgets</span></a>
 						</li>
@@ -399,7 +405,7 @@
 							<ul class="slide-menu">
 								<li><a href="profile.html" class="slide-item"> Profile</a></li>
 								<li><a href="editprofile.html" class="slide-item"> Edit Profile</a></li>
-								<li><a href="priidg-tables.html" class="slide-item"> Priidg Tables</a></li>
+								<li><a href="pricing-tables.html" class="slide-item"> Pricing Tables</a></li>
 								<li><a href="gallery.html" class="slide-item"> Gallery</a></li>
 								<li><a href="portfolio.html" class="slide-item"> Portfolio</a></li>
 								<li><a href="terms.html" class="slide-item"> Terms and Conditions</a></li>
@@ -436,116 +442,129 @@
 				</aside>
 				<!--aside closed-->
 
-                <!--app-content open-->
-				 <form method="POST" action="ajoutfinance.php">
+				<!--app-content open-->
 				<div class="app-content">
 					<section class="section">
 
-                        <!--page-header open-->
+					    <!--page-header open-->
 						<div class="page-header">
-							<h4 class="page-title">Gestion finance</h4>
+							<h4 class="page-title">Gestion employe</h4>
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="#" class="text-light-color">Forms</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Form Elements</li>
+								<li class="breadcrumb-item"><a href="#" class="text-light-color">Table</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Basic Tables</li>
 							</ol>
 						</div>
 						<!--page-header closed-->
 
+						<div class="section-body">
 
+                            <!--row open-->
+							
+									<div class="card export-database">
+										<div class="card-header">
+											<h4>Gestion employe</h4>
+										</div>
+										<div class="row">
+								<div class="col-md-12">
+									<div class="card export-database">
+										<div class="card-header">
+											<div class="float-right">
+												<form method="POST" action="trierf.php">
+       	   <!--<input type="submit" class="float-right"  value="trier">!-->
+       	    <button type="submit">trier</button>
+       	   <select name="trie" type="submit">
+	<option value="1" selected="selected">Salaire -</option>
+				<option value="2">Salaire +</option>
+			
+					</select>
+       </form>
+												 <form method="get" action="recherche.php">
+       	  <input type="text" class="float-right" name="search" placeholder="Taper pour chercher…">
+       	   <input type="submit" class="float-right"  value="search">
+       </form>
+											</div>
 
-							<div class="col-lg-12 col-xl-6 col-md-12 col-sm-12">
-								<div class="card">
-									<div class="card-header">
-										<h4>finance</h4>
+										<div class="card-body">
+											<div class="table-responsive">
+												<div id="HTMLtoPDF">
+											<table id="example" class="table table-bordered table-responsive-md table-striped text-center mb-0 text-nowrap" >
+													<thead>
+												
+													<tr>
+														<th>Cin</th>
+														<th>Nom</th>
+														<th>Prénom</th>
+														<th>Téléphone</th>
+														<th>Poste</th>
+														<th>Horaire</th>
+														<th>Salaire</th>											
+													</tr>
+												</thead>
+													<?PHP
+                                 foreach($listeemploye as $row){
+                                ?>
+                             
+                                <tr>
+                                    
+                                    <td><?PHP echo $row->cin; ?>  </td>
+                                    <td><?PHP echo $row->nom; ?>  </td>
+                                    <td><?PHP echo $row->prenom; ?></td>
+                                    <td><?PHP echo $row->tel; ?>  </td>
+                                    <td><?PHP echo $row->poste; ?>  </td>
+                                    <td><?PHP echo $row->horaire; ?></td>
+                                    <td><?PHP echo $row->salaire; ?>  
+                                </td><td class="pt-3-half">
+														<span class="table-up"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-up" aria-hidden="true"></i></a></span>
+														<span class="table-down"><a href="#!" class="indigo-text"><i class="fa fa-long-arrow-down"
+														aria-hidden="true"></i></a></span>
+													</td>
+
+                                   <td><form method="POST" action="supprimeremploye.php">
+                                       
+                                        <a href="modifieremploye.php?edit=<?php echo $row->cin; ?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></a>
+                                        <input class="bin btn-primary waves-effect waves-light m-r-10" type="submit" name="trash" value="trash">
+                                        <input type="hidden" value="<?PHP echo $row->cin; ?>" name="cin">
+                                 </form>
+                                    </td> 
+                                </tr>
+                              
+                                <?php
+                                }
+                                ?> 
+												</table>
+											</div>
+											
+											</div>
+										</div>
 									</div>
-									<div class="card-body">
-										<form class="form-horizontal" >
-											<!--<div class="form-group row">
-												<label class="col-md-3 col-form-label">id</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="id" >
-												</div>!-->
-											</div>
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">pain</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="pain" >
-												</div>
-											</div>
-																				
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">patisserie</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="patisserie" >
-												</div>
-											</div>										
-
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">viennoiserie</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="viennoiserie" >
-												</div>
-											</div>									
-
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">frais divers</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="divers" >
-												</div>
-											</div>										
-
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">matiére premiere</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="premiere" >
-												</div>
-											</div>										
-
-											<!--<div class="form-group row">
-												<label class="col-md-3 col-form-label">charges</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="charge" >
-												</div>
-											</div>
-												<div class="form-group row">
-												<label class="col-md-3 col-form-label">recettes</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="recette" >
-												</div>
-											</div>
-												<div class="form-group row">
-												<label class="col-md-3 col-form-label">RECETTE NET</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="net" >
-												</div>
-											</div>!-->
+								</div>
+							</div>
+						</div>
+					</tbody>
+				</tbody>
+			</thead>
+		</table>
+								<form method="POST" action="ajout-employe.html">
+								       <div class="card-footer">
+                                   <td><br/><br/><br/><button type="submit" class="btn btn-primary btn-sm" >
+                                                 <i class="fa fa-dot-circle-o" ></i> Ajouter </button> </td>
+                                                     
+                                                </td>  
 										
 				
 											
 										</form>
-										<button type="submit" class="btn btn-primary mt-1 mb-0">Submit</button>
-									</div>
-								</div>
-							</div>
 
+							<!--row closed-->
 
-						</div>
-				 </form>
-			
-					</section>
-				</div>
-				<!--app-content closed-->
-
-				<footer class="main-footer">
-					<div class="text-center">
-					
-					</div>
-				</footer>
+                            <!--row open-->
+							
+											
 
 				<!-- Popupchat open-->
 				<div class="popup-box chat-popup" id="qnimate">
 					<div class="popup-head">
-						<div class="popup-head-left pull-left"><img src="assets/img/avatar/avatar-3.jpg" alt="iamgurdeeposahan" class="mr-2"> Youssef Ghedas</div>
+						<div class="popup-head-left pull-left"><img src="assets/img/avatar/avatar-3.jpg" alt="iamgurdeeposahan" class="mr-2"> Alica Nestle</div>
 						<div class="popup-head-right pull-right">
 							<div class="btn-group">
 								<button class="chat-header-button" data-toggle="dropdown" type="button" aria-expanded="false">
@@ -567,7 +586,7 @@
 							</div>
 							<div class="direct-chat-msg">
 								<div class="direct-chat-info clearfix">
-									<span class="direct-chat-name float-left">Youssef Ghedas</span>
+									<span class="direct-chat-name float-left">Alica Nestle</span>
 									<span class="direct-chat-timestamp float-right">7:40 Am</span>
 								</div>
 								<img class="direct-chat-img" src="assets/img/avatar/avatar-3.jpg" alt="message user image">
@@ -628,13 +647,19 @@
 
 		<!-- Back to top -->
 		<a href="#top" id="back-to-top" ><i class="fa fa-angle-up"></i></a>
+	
 
 		<!-- Popup-chat -->
 		<a href="#" id="addClass"><i class="ti-comment"></i></a>
 
 		<!--Jquery.min js-->
-		<script type="text/javascript" src="js/form.js"></script>
+	<script src="js/jspdf.js"></script>
+	<script src="js/jquery-2.1.3.js"></script>
+	<script src="js/pdfFromHTML.js"></script>
+
 		<script src="assets/js/jquery.min.js"></script>
+
+
 
 		<!--popper js-->
 		<script src="assets/js/popper.js"></script>
@@ -660,12 +685,21 @@
 		<!--Sidemenu js-->
 		<script src="assets/plugins/toggle-menu/sidemenu.js"></script>
 
+
+
 		<!--Scripts js-->
 		<script src="assets/js/scripts.js"></script>
-		<script src="js/form.js"></script>
 		<script src="assets/js/jquery.showmore.js"></script>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+	</body>
 
-	 </body>
-
-<!-- Mirrored from www.spruko.com/demo/splite/formelements.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Feb 2019 18:34:42 GMT -->
+<!-- Mirrored from www.spruko.com/demo/splite/table.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 10 Feb 2019 18:34:37 GMT -->
 </html>

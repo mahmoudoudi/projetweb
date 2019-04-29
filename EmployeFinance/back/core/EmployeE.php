@@ -112,6 +112,54 @@ try{
             die('Erreur: '.$e->getMessage());
         }
 	}
+
+	function recherche($search_value){
+        $db = config::getConnexion();
+            $sql="select * from employe where nom like '%$search_value%'";
+        try{
+        $req=$db->prepare($sql);
+        $req->execute();
+        $employe= $req->fetchALL(PDO::FETCH_OBJ);
+        return $employe;
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }    
+}
+function trier(){
+        //$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
+        
+       $db = config::getConnexion();
+            $sql="SElECT * From employe ORDER BY salaire ASC";
+
+        try{
+        $req=$db->prepare($sql);
+        $req->execute();
+        $employe= $req->fetchALL(PDO::FETCH_OBJ);
+        return $employe;
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }    
+}
+function trier1(){
+        //$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
+        
+       $db = config::getConnexion();
+            $sql="SElECT * From employe ORDER BY salaire DESC";
+
+        try{
+        $req=$db->prepare($sql);
+        $req->execute();
+        $employe= $req->fetchALL(PDO::FETCH_OBJ);
+        return $employe;
+        }
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }    
+}
 }
 
+	
 ?>
+

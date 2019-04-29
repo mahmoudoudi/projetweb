@@ -6,7 +6,7 @@
 
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Gestion finance</title>
+		<title>Gestion Jobs</title>
 
 		<!--Favicon -->
 		<link rel="icon" href="favicon.html" type="image/x-icon"/>
@@ -269,14 +269,14 @@
 									<li><a href="tables-employe.php" class="slide-item"> Consulter</a>
 								</ul>
 							</li>
-						<li class="slide">
+								<li class="slide">
 								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">finance</span><i class="angle fa fa-angle-right"></i></a>
 								<ul class="slide-menu">
 									<li><a href="ajout-finance.html" class="slide-item"> Ajouter</a></li>
 									<li><a href="tables-finance.php" class="slide-item"> Consulter</a>
 								</ul>
 							</li>
-							<li class="slide">
+						<li class="slide">
 								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">Jobs</span><i class="angle fa fa-angle-right"></i></a>
 								<ul class="slide-menu">
 									<li><a href="ajout-jobs.html" class="slide-item"> Ajouter</a></li>
@@ -399,7 +399,7 @@
 							<ul class="slide-menu">
 								<li><a href="profile.html" class="slide-item"> Profile</a></li>
 								<li><a href="editprofile.html" class="slide-item"> Edit Profile</a></li>
-								<li><a href="priidg-tables.html" class="slide-item"> Priidg Tables</a></li>
+								<li><a href="pricing-tables.html" class="slide-item"> Pricing Tables</a></li>
 								<li><a href="gallery.html" class="slide-item"> Gallery</a></li>
 								<li><a href="portfolio.html" class="slide-item"> Portfolio</a></li>
 								<li><a href="terms.html" class="slide-item"> Terms and Conditions</a></li>
@@ -437,13 +437,13 @@
 				<!--aside closed-->
 
                 <!--app-content open-->
-				 <form method="POST" action="ajoutfinance.php">
+				 <form method="POST" action="ajoutjobs.php">
 				<div class="app-content">
 					<section class="section">
 
                         <!--page-header open-->
 						<div class="page-header">
-							<h4 class="page-title">Gestion finance</h4>
+							<h4 class="page-title">Gestion Jobs</h4>
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="#" class="text-light-color">Forms</a></li>
 								<li class="breadcrumb-item active" aria-current="page">Form Elements</li>
@@ -456,73 +456,54 @@
 							<div class="col-lg-12 col-xl-6 col-md-12 col-sm-12">
 								<div class="card">
 									<div class="card-header">
-										<h4>finance</h4>
+										<h4>Jobs Offers</h4>
 									</div>
 									<div class="card-body">
 										<form class="form-horizontal" >
-											<!--<div class="form-group row">
-												<label class="col-md-3 col-form-label">id</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="id" >
-												</div>!-->
-											</div>
+											
 											<div class="form-group row">
-												<label class="col-md-3 col-form-label">pain</label>
+												<label class="col-md-3 col-form-label">Poste</label>
 												<div class="col-md-9">
-													<input class="form-control" type="number" name="pain" >
+													<input class="form-control" type="text" name="poste" >
 												</div>
 											</div>
 																				
 											<div class="form-group row">
-												<label class="col-md-3 col-form-label">patisserie</label>
+												<label class="col-md-3 col-form-label">Salaire</label>
 												<div class="col-md-9">
-													<input class="form-control" type="number" name="patisserie" >
+													<input class="form-control" type="number" name="salaire" >
 												</div>
 											</div>										
 
 											<div class="form-group row">
-												<label class="col-md-3 col-form-label">viennoiserie</label>
+												<label class="col-md-3 col-form-label">Experience</label>
 												<div class="col-md-9">
-													<input class="form-control" type="number" name="viennoiserie" >
+													<input class="form-control" type="text" name="experience" >
 												</div>
 											</div>									
 
 											<div class="form-group row">
-												<label class="col-md-3 col-form-label">frais divers</label>
+												<label class="col-md-3 col-form-label">horaire</label>
 												<div class="col-md-9">
-													<input class="form-control" type="number" name="divers" >
+													<input class="form-control" type="text" name="horaire" >
 												</div>
 											</div>										
+<label>etat</label>
+											<div class="form-group row" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 36px, 0px); top: 265px; left: 183px; will-change: transform;">
+												
+												<select name="etat" class="dropdown-menu show">
+				<option value="1" selected="selected">disponible</option>
+				<option value="0">non disponible</option>
+			
+					</select>		
 
-											<div class="form-group row">
-												<label class="col-md-3 col-form-label">matiére premiere</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="premiere" >
-												</div>
-											</div>										
-
-											<!--<div class="form-group row">
-												<label class="col-md-3 col-form-label">charges</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="charge" >
-												</div>
-											</div>
-												<div class="form-group row">
-												<label class="col-md-3 col-form-label">recettes</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="recette" >
-												</div>
-											</div>
-												<div class="form-group row">
-												<label class="col-md-3 col-form-label">RECETTE NET</label>
-												<div class="col-md-9">
-													<input class="form-control" type="number" name="net" >
-												</div>
-											</div>!-->
+											</div>		
+											
+									
 										
 				
 											
-										</form>
+										</form><br/><br/>	
 										<button type="submit" class="btn btn-primary mt-1 mb-0">Submit</button>
 									</div>
 								</div>

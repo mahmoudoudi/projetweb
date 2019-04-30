@@ -70,7 +70,7 @@ if (isset($_GET['search'])&&!empty($_GET['search'])) {
 
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Liste des produit</title>
+		<title>Liste des Recettes</title>
 
 		<!--favicon -->
 		<link rel="icon" href="favicon.html" type="image/x-icon"/>
@@ -343,21 +343,21 @@ if (isset($_GET['search'])&&!empty($_GET['search'])) {
 								<li class="slide">
 								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">Employe</span><i class="angle fa fa-angle-right"></i></a>
 								<ul class="slide-menu">
-									<li><a href="ajout-employe.html" class="slide-item"> Ajouter</a></li>
+									<li><a href="ajout-employe.php" class="slide-item"> Ajouter</a></li>
 									<li><a href="tables-employe.php" class="slide-item"> consulter</a>
 								</ul>
 							</li>
 							<li class="slide">
 								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">Finance</span><i class="angle fa fa-angle-right"></i></a>
 								<ul class="slide-menu">
-									<li><a href="ajout-finance.html" class="slide-item"> Ajouter</a></li>
+									<li><a href="ajout-finance.php" class="slide-item"> Ajouter</a></li>
 									<li><a href="tables-finance.php" class="slide-item"> consulter</a>
 								</ul>
 							</li>
 							<li class="slide">
 								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">Jobs</span><i class="angle fa fa-angle-right"></i></a>
 								<ul class="slide-menu">
-									<li><a href="ajout-jobs.html" class="slide-item"> Ajouter</a></li>
+									<li><a href="ajout-jobs.php" class="slide-item"> Ajouter</a></li>
 									<li><a href="tables-jobs.php" class="slide-item"> consulter</a>
 								</ul>
 							</li>
@@ -371,7 +371,7 @@ if (isset($_GET['search'])&&!empty($_GET['search'])) {
 
 					    <!--page-header open-->
 						<div class="page-header">
-							<h4 class="page-title">Gestion finance</h4>
+							<h4 class="page-title">Gestion Recette</h4>
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="#" class="text-light-color">Table</a></li>
 								<li class="breadcrumb-item active" aria-current="page">Basic Tables</li>
@@ -386,7 +386,7 @@ if (isset($_GET['search'])&&!empty($_GET['search'])) {
 								<div class="col-lg-12">
 									<div class="card">
 										<div class="card-header">
-											<h4>Gestion finance</h4>
+											<h4>Gestion Recette</h4>
 										</div>
 										<div class="row">
 								<div class="col-12">
@@ -404,6 +404,7 @@ if (isset($_GET['search'])&&!empty($_GET['search'])) {
 											</div>
 										<div class="card-body">
 											<div class="table-responsive">
+												<br/>
 											<table id="example" class="table table-bordered border-t0 key-buttons text-nowrap w-100" >
 													<thead>
 												
@@ -451,22 +452,31 @@ if (isset($_GET['search'])&&!empty($_GET['search'])) {
                                 <?php
                                 }
                                 ?> 
+
+
 												</table>
 											</div>
 										</div>
 									</div>
-								</div>
-								<form method="POST" action="ajout-finance.html">
-								       <div class="card-footer">
-                                   <td><br/><br/><br/><button type="submit" class="btn btn-primary btn-sm" >
-                                                 <i class="fa fa-dot-circle-o" ></i> Ajouter </button> </td>
+									<div class="card-footer">
+										 <button onclick="location.href = 'recettepdf.php';" class="btn btn-primary btn-sm" >
+                                                 <i class="fa fa-dot-circle-o" ></i> télécharger en PDF </button>
+                                                                                  <form method="POST" action="ajout-finance.html">
+								     
+                                   <td><br/><button type="submit" class="btn btn-primary btn-sm" >
+                                                 <i class="fa fa-dot-circle-o" ></i> Ajouter </button> 
+                                                 </td>
                                                      
                                                 </td>  
 										
 				
 											
 										</form>
+  </div>
 
+								</div>
+
+								
 							<!--row closed-->
 
                             <!--row open-->

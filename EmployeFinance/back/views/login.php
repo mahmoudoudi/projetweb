@@ -17,7 +17,7 @@ if(isset($_POST) && !empty($_POST['login']) && !empty($_POST['pass'])) {
 			'login' => $login,
 			'pass' => $pass 
 		);
-		header('location: tables-finance.php');
+		header('location: index-2a.php');
 	}
 	else {
 		echo "mauvais identifiant";

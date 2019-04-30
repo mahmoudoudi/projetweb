@@ -266,21 +266,21 @@ require("auth.php");
 								<li class="slide">
 								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">Employe</span><i class="angle fa fa-angle-right"></i></a>
 								<ul class="slide-menu">
-									<li><a href="ajout-employe.html" class="slide-item"> Ajouter</a></li>
+									<li><a href="ajout-employe.php" class="slide-item"> Ajouter</a></li>
 									<li><a href="tables-employe.php" class="slide-item"> consulter</a>
 								</ul>
 							</li>
 							<li class="slide">
 								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">Finance</span><i class="angle fa fa-angle-right"></i></a>
 								<ul class="slide-menu">
-									<li><a href="ajout-finance.html" class="slide-item"> Ajouter</a></li>
+									<li><a href="ajout-finance.php" class="slide-item"> Ajouter</a></li>
 									<li><a href="tables-finance.php" class="slide-item"> consulter</a>
 								</ul>
 							</li>
 							<li class="slide">
 								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">Jobs</span><i class="angle fa fa-angle-right"></i></a>
 								<ul class="slide-menu">
-									<li><a href="ajout-jobs.html" class="slide-item"> Ajouter</a></li>
+									<li><a href="ajout-jobs.php" class="slide-item"> Ajouter</a></li>
 									<li><a href="tables-jobs.php" class="slide-item"> consulter</a>
 								</ul>
 							</li>

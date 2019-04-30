@@ -99,7 +99,7 @@ try{
 	}
 	
 	function rechercherListejobs($id){
-		$sql="SELECT * from jobs where id=$id";
+		$sql="SELECT * from jobs where poste=$poste";
 		$db = config::getConnexion();
 		try{
 		$liste=$db->query($sql);
@@ -123,11 +123,11 @@ try{
             die('Erreur: '.$e->getMessage());
         }    
 }
-function trier(){
+function trier() { 
         //$sql="SElECT * From jobs e inner join formationphp.jobs a on e.id= a.id";
         
        $db = config::getConnexion();
-            $sql="SElECT * From jobs ORDER BY etat ASC";
+            $sql="SELECT * From jobs ORDER BY etat ASC";
 
         try{
         $req=$db->prepare($sql);
@@ -138,12 +138,13 @@ function trier(){
         catch (Exception $e){
             die('Erreur: '.$e->getMessage());
         }    
+
 }
 function trier1(){
         //$sql="SElECT * From jobs e inner join formationphp.jobs a on e.id= a.id";
         
        $db = config::getConnexion();
-            $sql="SElECT * From jobs ORDER BY etat DESC";
+            $sql="SELECT * From jobs ORDER BY etat DESC";
 
         try{
         $req=$db->prepare($sql);
@@ -155,8 +156,7 @@ function trier1(){
             die('Erreur: '.$e->getMessage());
         }    
 }
-}
 
-	
+}	
 ?>
 

@@ -1,13 +1,50 @@
 <?PHP
 include "../core/employeE.php";
+
 $employeP1=new employeE();
 $listeemploye=$employeP1->afficheremployes();
+$listejobs=$employeP1->afficherjobss();
+
+require 'PHPMailerAutoload.php';
+require 'credential.php';
+
+/*
+$mail = new PHPMailer;
+
+$mail->SMTPDebug = 4;                               // Enable verbose debug output
+
+$mail->isSMTP();                                      // Set mailer to use SMTP
+$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+$mail->SMTPAuth = true;                               // Enable SMTP authentication
+$mail->Username = EMAIL;                 // SMTP username
+$mail->Password = PASS;                           // SMTP password
+$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+$mail->Port = 587;                                    // TCP port to connect to
+
+$mail->setFrom(EMAIL, 'Mailer');
+$mail->addAddress("mrboubagame@gmail.com");     // Add a recipient
+$mail->addReplyTo(EMAIL);
+
+//$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+$mail->isHTML(true);                                  // Set email format to HTML
+
+$mail->Subject = '$_POST[subject]';
+$mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+$mail->AltBody = '"$_POST[message]"';
+
+if(!$mail->send()) {
+    echo 'Message could not be sent.';
+    echo 'Mailer Error: ' . $mail->ErrorInfo;
+} else {
+    echo 'Message has been sent';
+}*/
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Nos Employes</title>
+	<title>Emplois</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -113,7 +150,7 @@ $listeemploye=$employeP1->afficheremployes();
 								<a href="contact.html">Contact</a>
 							</li>
 								<li class="sale-noti">
-								<a href="employe.php">Nos Employés</a>
+								<a href="employe.php">Emplois</a>
 							</li>
 						</ul>
 					</nav>
@@ -402,8 +439,25 @@ $listeemploye=$employeP1->afficheremployes();
                             <div class="card-header">
                                 <strong class="card-title"> Nos Employés </strong>
                             </div>
-                            <div class="card-body">
-                                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                            <div class="card">
+									<div class="card-header">
+										<ul class="nav nav-pills " id="myTab3" role="tablist">
+											<li class="nav-item">
+												<a class="nav-link active show" id="home-tab3" data-toggle="tab" href="#home3" role="tab" aria-controls="home" aria-selected="true">Nos Employés</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" id="profile-tab3" data-toggle="tab" href="#profile3" role="tab" aria-controls="profile" aria-selected="false">Emplois</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" id="contact-tab3" data-toggle="tab" href="#contact3" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+											</li>
+										</ul>
+									</div>
+									<div class="card-body">
+										<div class="tab-content">
+										   
+											<div class="tab-pane fade p-0 active show" id="home3" role="tabpanel" aria-labelledby="home-tab3">
+												<table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                     <thead>
                                       
                                         <?PHP
@@ -423,6 +477,31 @@ $listeemploye=$employeP1->afficheremployes();
                                         
                                         
                                 </table>
+											</div>
+											<div class="tab-pane fade p-0" id="profile3" role="tabpanel" aria-labelledby="profile-tab3">
+												 <?PHP
+                                 foreach($listejobs as $row){
+                                ?>
+                                <tr>
+                                    <td><p>Poste :</p><?PHP echo $row['poste']; ?>  
+                                    <p>Salaire :</p><?PHP echo $row['salaire']; ?>
+                                    <p>Experience demander:</p><?PHP echo $row['experience']; ?>
+                                    <p>Horaire de travail:</p><?PHP echo $row['horaire']; ?></td>
+                                 
+                                </tr>
+                                <?php
+                                }
+                                ?> 
+											</div>
+											<div class="tab-pane fade p-0" id="contact3" role="tabpanel" aria-labelledby="contact-tab3">
+												<a href="mailto:boubaker.jouini@esprit.tn" > Envoyez nous un mail</a>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+                            <div class="card-body">
+                                
                             </div>
                         </div>
                     </div>

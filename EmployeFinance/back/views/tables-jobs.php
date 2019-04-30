@@ -270,21 +270,21 @@ $listejobs=$jobsJ1->afficherjobss();
 								<li class="slide">
 								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">Employe</span><i class="angle fa fa-angle-right"></i></a>
 								<ul class="slide-menu">
-									<li><a href="ajout-employe.html" class="slide-item"> Ajouter</a></li>
+									<li><a href="ajout-employe.php" class="slide-item"> Ajouter</a></li>
 									<li><a href="tables-employe.php" class="slide-item"> consulter</a>
 								</ul>
 							</li>
 							<li class="slide">
 								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">Finance</span><i class="angle fa fa-angle-right"></i></a>
 								<ul class="slide-menu">
-									<li><a href="ajout-finance.html" class="slide-item"> Ajouter</a></li>
+									<li><a href="ajout-finance.php" class="slide-item"> Ajouter</a></li>
 									<li><a href="tables-finance.php" class="slide-item"> consulter</a>
 								</ul>
 							</li>
 							<li class="slide">
 								<a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon fa fa-cogs"></i><span class="side-menu__label">Jobs</span><i class="angle fa fa-angle-right"></i></a>
 								<ul class="slide-menu">
-									<li><a href="ajout-jobs.html" class="slide-item"> Ajouter</a></li>
+									<li><a href="ajout-jobs.php" class="slide-item"> Ajouter</a></li>
 									<li><a href="tables-jobs.php" class="slide-item"> consulter</a>
 								</ul>
 							</li>
@@ -319,17 +319,17 @@ $listejobs=$jobsJ1->afficherjobss();
 									<div class="card export-database">
 										<div class="card-header">
 											<div class="float-right">
-												<form method="POST" action="trierJ.php">
-       	  <button type="submit">trier</button>
+				<form method="POST" action="trierJ.php">
+       	  <button class="bin btn-primary waves-effect waves-light m-r-10" type="submit">trier</button>
        	   <select name="trie" type="submit">
 			<option value="1" selected="selected">Disponible</option>
-				<option value="0">Non Disponible</option>
+				<option value="2">non Disponible</option>
 			
 					</select>
        </form>
-												 <form method="get" action="recherche.php">
+												 <form method="get" action="recherchej.php">
        	  <input type="text" class="float-right" name="search" placeholder="Taper pour chercher…">
-       	   <input type="submit" class="float-right"  value="search">
+       	  <button class="bin btn-primary waves-effect waves-light m-r-10" type="submit">Rechercher</button>
        </form>
 											</div>
 
@@ -366,12 +366,16 @@ $listejobs=$jobsJ1->afficherjobss();
                            	
 
                                    <td><form method="POST" action="supprimerjobs.php">
-                                       
+                                        <a href="modifierjobs.php?edit=<?php echo $row['id']; ?>" class="bin btn-primary waves-effect waves-light m-r-10" 
+                                        value="Activer"><i class="fa fa-pencil"></i></a>
+                                           <a href="modifierjobs.php?edit=<?php echo $row['id']; ?>" class="bin btn-primary waves-effect waves-light m-r-10" 
+                                        value="Desactiver"></a>
                                         <a href="modifierjobs.php?edit=<?php echo $row['id']; ?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></a>
                                         <input class="bin btn-primary waves-effect waves-light m-r-10" 
                                         type="submit" name="trash" value="trash">
                                         <input type="hidden" value="<?PHP echo $row['id']; ?>" name="id">
                                  </form>
+
                                     </td> 
                                 </tr>
                               

@@ -115,7 +115,7 @@ try{
 
 	function recherche($search_value){
         $db = config::getConnexion();
-            $sql="select * from employe where nom like '%$search_value%'";
+            $sql="select * from employe where nom like '%$search_value%' or prenom like '%$search_value%'";
         try{
         $req=$db->prepare($sql);
         $req->execute();

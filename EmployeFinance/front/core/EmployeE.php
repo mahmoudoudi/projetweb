@@ -44,6 +44,17 @@ function afficheremploye ($employe){
             die('Erreur: '.$e->getMessage());
         }	
 	}
+		function afficherjobss(){
+		$sql="SElECT * From jobs where etat=1";
+		$db = config::getConnexion();
+		try{
+		$liste=$db->query($sql);
+		return $liste;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+	}
 	function supprimeremploye($cin){
 		$sql="DELETE FROM employe where cin= :cin";
 		$db = config::getConnexion();

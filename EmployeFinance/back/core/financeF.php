@@ -96,6 +96,22 @@ try{
         }
 		
 	}
+		function recupererhistorique()
+	{
+   		$sql="SELECT * from finance";
+		$db = config::getConnexion();
+		
+		try
+		{
+		$liste=$db->query($sql);
+		$liste->execute();
+		return $liste;
+		}
+        catch (Exception $e)
+        {
+            die('Erreur: '.$e->getMessage());
+        }
+	}
 	function recupereremploye($id){
 		$sql="SELECT * from finance where id=$id";
 		$db = config::getConnexion();
